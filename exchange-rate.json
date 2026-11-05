@@ -1,0 +1,9 @@
+{
+  "base": "THB",
+  "quote": "JPY",
+  "rate": 4.72877,
+  "asOf": "2026-11-05",
+  "displayDate": "5 Nov 2026",
+  "sourceName": "Wise",
+  "sourceUrl": "https://wise.com/gb/currency-converter/thb-to-jpy-rate/history"
+}

@@ -17,7 +17,14 @@ var signs=options.signs?6000:0;
 var deposit=round(venue.referenceDeposit*scale);
 return {rent:rent,setup:setup,storage:storage,signs:signs,deposit:deposit,subtotal:rent+setup+storage+signs,total:rent+setup+storage+signs+deposit};
 }
-if(typeof module!=='undefined'&&module.exports)module.exports={estimate:estimate,seasons:seasons,setups:setups};
+function convertedAmount(amount,currency,rate){
+return currency==='JPY'?Math.round(amount*rate):amount;
+}
+function formatMoney(amount,currency,rate){
+var value=convertedAmount(amount,currency,rate);
+return (currency==='JPY'?'¥':'THB ')+value.toLocaleString('en-US');
+}
+if(typeof module!=='undefined'&&module.exports)module.exports={estimate:estimate,seasons:seasons,setups:setups,convertedAmount:convertedAmount,formatMoney:formatMoney};
 if(typeof document==='undefined')return;
 var form=document.getElementById('rental-form');
 if(!form)return;
@@ -29,12 +36,25 @@ var result=document.getElementById('rental-result');
 var intro=document.getElementById('rental-intro');
 var status=document.getElementById('rental-status');
 var hasEstimate=false;
-function money(n){return 'THB '+n.toLocaleString('en-US');}
+var converter=document.getElementById('estimate-currency');
+var exchangeRate=JSON.parse(document.getElementById('exchange-rate-data').textContent);
+function money(n){return formatMoney(n,converter.value,exchangeRate.rate);}
+function renderCurrency(){
+result.querySelectorAll('[data-thb]').forEach(function(element){
+element.textContent=money(Number(element.dataset.thb));
+});
+document.getElementById('estimate-currency-note').textContent=converter.value==='JPY'?'Includes the refundable deposit. Amounts shown in Japanese yen (JPY).':'Includes the refundable deposit. All prices are in Thai baht (THB).';
+document.getElementById('conversion-rounding').hidden=converter.value!=='JPY';
+}
+converter.addEventListener('change',function(){
+renderCurrency();
+status.textContent=converter.value==='JPY'?'Estimate shown in Japanese yen.':'Estimate shown in Thai baht.';
+});
 function addRow(label,value,extraClass){
 var row=document.createElement('div');
 if(extraClass)row.className=extraClass;
 var dt=document.createElement('dt');dt.textContent=label;
-var dd=document.createElement('dd');dd.textContent=money(value);
+var dd=document.createElement('dd');dd.dataset.thb=String(value);dd.textContent=money(value);
 row.appendChild(dt);row.appendChild(dd);
 document.getElementById('estimate-breakdown').appendChild(row);
 }
@@ -60,7 +80,8 @@ if(options.storage)addRow('Extra stock storage',quote.storage);
 if(options.signs)addRow('Printed brand signs',quote.signs);
 addRow('Rent, setup & extras',quote.subtotal,'estimate-subtotal');
 addRow('Refundable deposit',quote.deposit);
-document.getElementById('estimate-total').textContent=money(quote.total);
+document.getElementById('estimate-total').dataset.thb=String(quote.total);
+renderCurrency();
 document.getElementById('estimate-inclusions').textContent=setups[options.setup].includes+(options.storage?' Extra stock storage is included.':'')+(options.signs?' Printed brand signs are included.':'');
 intro.hidden=true;result.hidden=false;hasEstimate=true;
 status.textContent='Estimate ready for '+venue.name+'.';

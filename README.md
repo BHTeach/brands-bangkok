@@ -46,3 +46,9 @@ Source URLs and photo credits remain available in sources.html and venues.json. 
 ## Privacy
 
 The password form runs locally and makes no authentication request. There are no accounts, enquiry forms, analytics, tracking cookies or student records. GitHub hosting and external source websites have their own technical access logging and privacy practices.
+
+## Currency display
+
+The estimate includes a Currency Converter for THB and JPY. All line items and the total switch together; underlying prices remain in THB so repeated switching does not compound rounding. JPY display rounds to whole yen.
+
+The fixed rate in exchange-rate.json is 1 THB = JPY 4.72877, checked from Wise on 5 November 2026. It is a dated rate snapshot, not a continuously refreshed feed. The displayed rate, date and source come from that same file. This provides a consistent reference for the printable materials when they are revised. To refresh it, update exchange-rate.json and rebuild the site.
