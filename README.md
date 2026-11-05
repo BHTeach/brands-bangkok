@@ -1,30 +1,35 @@
 # Brands Bangkok
 
-An initial public website for international fashion and retail businesses exploring Bangkok. Created for English communication activities at British Hills.
+A promotional-style website for overseas fashion and retail businesses exploring Bangkok. Educational context and research notes are kept in this repository rather than in the visitor-facing copy.
 
-## Pages
+## Access
 
-- Home and location collection
-- Separate profiles for CentralWorld, Siam Center, Terminal 21 Asok, Siam Paragon and Central Embassy
-- Planning guide, about page, sources and photograph credits
-- Individual print buttons and a complete printable HTML pack
+Website password: BHFutureLeaders
+
+Every HTML page includes a lightweight client-side gate, including direct links to profiles, sources and the print pack. Successful entry is remembered in sessionStorage for the current tab. The footer's Lock site button ends that access. JavaScript is required; content stays hidden without it.
+
+This is an accidental-visitor deterrent, not secure authentication. GitHub Pages serves static files, the repository is public, and page source and assets remain publicly retrievable. Do not store confidential information here. Pages include noindex metadata to discourage search indexing.
 
 ## Hosting
 
-Buildless static HTML, CSS and JavaScript. In GitHub Settings → Pages, choose Deploy from a branch, then main and /(root). No framework, package installation, API keys or environment variables are required.
+Static HTML, CSS and JavaScript, published from main and /(root) with GitHub Pages. No framework, package installation, API keys or environment variables are needed.
 
 ## Editing
 
-Edit venues.json for location content. build.mjs generates the HTML using that data and embedded templates. Run `node build.mjs` after content/template changes, then commit the generated pages as well. Shared design and navigation behaviour live in assets/style.css and assets/site.js. Photographs are stored locally in assets/.
+Edit venues.json for profile copy. Run `node build.mjs` to rebuild HTML after content or template edits, then commit the generated pages too. Shared design is in assets/style.css; mobile navigation and the separate pack's print action are in assets/site.js. Access logic is in assets/access.js. Photographs are stored in assets/.
 
-## Information status
+## Printable pack
 
-Venue facts were checked against the official sources linked on the website on 5 November 2026. Transport and retail descriptions are based on published information. Business perspectives are editorial interpretation. All prices, floor areas, deposits, fit-out amounts and sample commercial terms are fictional, not venue quotations or available inventory. No venue affiliation or endorsement is claimed. Sources and image licences are recorded in sources.html and venues.json. Resized/cropped photographs retain their stated licences.
+The printable pack remains at print-pack.html as a separate teacher resource. Main site pages have no print buttons or links to the pack. The pack uses the same current profile information as the website and has its own Print all five profiles button.
 
-## Teaching approach
+## Teacher and research notes
 
-The site provides accessible English information without ranking venues, prescribing team roles, distributing different information to different students, or supplying a model recommendation. Students can organise their research and discussion themselves.
+This is an English communication resource for British Hills. Brands Bangkok is a fictional business, not a real leasing agency or venue partner. Real location, retail and transport information was checked against the linked official sources on 5 November 2026. All package prices, floor areas, setup amounts, deposits and commercial terms are fictional course material and do not represent real offers or available space. No booking, enquiry or payment is sent to a real venue.
+
+The website deliberately uses the voice of a business promotion site. Simulation notices and teaching instructions are not shown to students. It does not rank locations, assign research roles or provide a model recommendation.
+
+Source URLs and photo credits remain available in sources.html and venues.json. Photographs are resized/cropped and retain the licences shown in the credits.
 
 ## Privacy
 
-No student data, forms, accounts, analytics, API keys or tracking cookies. External links lead to venue and source websites; GitHub Pages hosting has its own technical logging policies.
+The password form runs locally and makes no authentication request. There are no accounts, enquiry forms, analytics, tracking cookies or student records. GitHub hosting and external source websites have their own technical access logging and privacy practices.
