@@ -18,9 +18,22 @@ Static HTML, CSS and JavaScript, published from main and /(root) with GitHub Pag
 
 Edit venues.json for profile copy. Run `node build.mjs` to rebuild HTML after content or template edits, then commit the generated pages too. Shared design is in assets/style.css; mobile navigation and the separate pack's print action are in assets/site.js. Access logic is in assets/access.js. Photographs are stored in assets/.
 
+## Website structure
+
+Location profiles focus on shops, transport and neighbourhoods. They do not display rental prices or fixed pop-up packages. Business services are introduced on planning.html, with a separate rental.html page for rates. A profile's Retail space enquiries link can preselect that location only.
+
+The rental page requires a season, length of stay, size and setup before showing an estimate. It has no preset September or 14-day choice. Options:
+- Seasons: Feb–Apr, May–Jul, Aug–Oct, Nov–Jan.
+- Stays: 7, 14 or 28 days.
+- Space: 20, 40 or 60 square metres.
+- Setup: space only, retail setup, or brand display.
+- Optional stock storage and printed brand signs.
+
+Rental math in assets/rental.js uses the previous per-venue 14-day Aug–Oct rent and reference area as its basis. Rent scales by area, days and seasonal factor (1.1, 0.9, 1, 1.3 respectively). Setup is charged once, using 0, 1 or 1.5 times the area-scaled reference setup price. Storage is THB 300/day; signs are THB 6,000 once. The deposit scales with area and is shown separately. Rent, setup and deposits are rounded to the nearest THB 100. Total before opening includes the deposit; taxes and stated operating costs remain excluded.
+
 ## Printable pack
 
-The printable pack remains at print-pack.html as a separate teacher resource. Main site pages have no print buttons or links to the pack. The pack uses the same current profile information as the website and has its own Print all five profiles button.
+The existing print-pack.html draft is deliberately unchanged during this website revision. It is unlinked from student-facing pages. Its content will be revised separately after the website is agreed. build.mjs no longer rebuilds it automatically.
 
 ## Teacher and research notes
 
