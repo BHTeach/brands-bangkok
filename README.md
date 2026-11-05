@@ -33,7 +33,24 @@ Rental math in assets/rental.js uses the previous per-venue 14-day Aug–Oct ren
 
 ## Printable pack
 
-The existing print-pack.html draft is deliberately unchanged during this website revision. It is unlinked from student-facing pages. Its content will be revised separately after the website is agreed. build.mjs no longer rebuilds it automatically.
+Two separate six-page A4 booklets are available, so rental information can be handed out for the second part of lesson 1:
+
+- print/brands-bangkok-locations.pdf — overview, business services and five full location profiles, with photographs and credits.
+- print/brands-bangkok-rental-rates.pdf — options and terms, followed by a rate page for each location. Every combination of season, 7/14/28-day stay and 20/40/60 m² space is listed; setup, extras and refundable deposits are separate. The dated THB–JPY rate is printed.
+
+print-pack.html contains both booklets. print-locations.html and print-rental.html contain each separately. These pages retain the access gate and are unlinked from the student website navigation; print and PDF controls appear only on these resource pages. PDF assets are static public files, like other repository assets.
+
+build.mjs also runs build-print.mjs, which uses venues.json, exchange-rate.json and the actual estimator in assets/rental.js to produce the HTML and print/print-data.json. This avoids a second set of pricing formulas.
+
+After changing venue data, prices or the exchange rate, rebuild both HTML and PDFs and commit the generated files:
+
+~~~sh
+node build.mjs
+python -m pip install reportlab Pillow
+python scripts/build-print-pdf.py
+~~~
+
+The PDF script uses Arial and Georgia from C:/Windows/Fonts. On other systems, set BB_FONT_DIR to a directory with the same font filenames (see the script). PDF generation is separate so ordinary website rebuilds remain dependency-free.
 
 ## Teacher and research notes
 
@@ -51,4 +68,4 @@ The password form runs locally and makes no authentication request. There are no
 
 The estimate includes a Currency Converter for THB and JPY. All line items and the total switch together; underlying prices remain in THB so repeated switching does not compound rounding. JPY display rounds to whole yen.
 
-The fixed rate in exchange-rate.json is 1 THB = JPY 4.72877, checked from Wise on 5 November 2026. It is a dated rate snapshot, not a continuously refreshed feed. The displayed rate, date and source come from that same file. This provides a consistent reference for the printable materials when they are revised. To refresh it, update exchange-rate.json and rebuild the site.
+The fixed rate in exchange-rate.json is 1 THB = JPY 4.72877, checked from Wise on 5 November 2026. It is a dated rate snapshot, not a continuously refreshed feed. The displayed rate, date and source come from that same file. The printable booklets use this same dated rate. To refresh it, update exchange-rate.json and rebuild the site.
