@@ -1,0 +1,872 @@
+{
+  "rate": {
+    "base": "THB",
+    "quote": "JPY",
+    "rate": 4.72877,
+    "asOf": "2026-11-05",
+    "displayDate": "5 Nov 2026",
+    "sourceName": "Wise",
+    "sourceUrl": "https://wise.com/gb/currency-converter/thb-to-jpy-rate/history"
+  },
+  "services": [
+    [
+      "Short-term retail",
+      "A space for a new collection, a product display or a first visit to the city. Rental options are available at all five locations, with a choice of dates, space sizes and setup."
+    ],
+    [
+      "Brand launches and events",
+      "A launch can bring your products and brand story to a new audience. Displays, signs and event space can be arranged to match the location and the collection."
+    ],
+    [
+      "Store setup",
+      "From clothing rails and a sales counter to display lights and fitting areas, setup can be simple or more complete. Extra storage and printed signs are also available."
+    ],
+    [
+      "A longer-term home",
+      "For permanent stores, space size, design and lease length are agreed separately. Each of our location profiles gives a view of the shopping offer and the surrounding area."
+    ],
+    [
+      "Local arrangements",
+      "Delivery access, opening times and the exact space are confirmed with the final offer. Staff, stock and payment equipment are arranged separately."
+    ]
+  ],
+  "terms": [
+    "Rent covers the full stay shown in the table. Setup is charged once. Extra stock storage is charged for the full stay. Printed brand signs are charged once.",
+    "The refundable deposit is paid before opening. It is returned after the space is checked, if there is no damage or unpaid charge.",
+    "Staff, stock, payment equipment, electricity and taxes are not included.",
+    "An estimate does not reserve a space. Exact dates and the position of the space are confirmed before booking."
+  ],
+  "sections": [
+    [
+      "The retail character",
+      "character"
+    ],
+    [
+      "Around the address",
+      "neighbourhood"
+    ],
+    [
+      "Getting here",
+      "access"
+    ],
+    [
+      "A fashion business perspective",
+      "business"
+    ],
+    [
+      "Beyond fashion",
+      "beyond"
+    ]
+  ],
+  "seasons": [
+    {
+      "key": "feb-apr",
+      "label": "Feb – Apr"
+    },
+    {
+      "key": "may-jul",
+      "label": "May – Jul"
+    },
+    {
+      "key": "aug-oct",
+      "label": "Aug – Oct"
+    },
+    {
+      "key": "nov-jan",
+      "label": "Nov – Jan"
+    }
+  ],
+  "setups": [
+    {
+      "key": "space",
+      "label": "Space only",
+      "includes": "Empty space, ready for your own equipment and displays."
+    },
+    {
+      "key": "retail",
+      "label": "Retail setup",
+      "includes": "Clothing rails, a sales counter and a mirror."
+    },
+    {
+      "key": "brand",
+      "label": "Brand display",
+      "includes": "Clothing rails, a sales counter, a mirror, display lights, branded panels and a small fitting area."
+    }
+  ],
+  "venues": [
+    {
+      "slug": "centralworld",
+      "name": "CentralWorld",
+      "area": "Ratchaprasong",
+      "line": "A city-scale stage for retail.",
+      "type": "International fashion · Lifestyle · Events",
+      "rail": "BTS Chit Lom / Siam",
+      "access": "CentralWorld is a short walk from BTS Chit Lom or Siam. Raised walkways connect the shopping area to both stations.",
+      "intro": "Put your brand among international fashion, food, beauty and entertainment in the centre of Bangkok.",
+      "character": "CentralWorld has a wide choice of clothing and sportswear. Uniqlo, Zara, Adidas and Nike are among the brands here. Visitors can shop, meet friends and spend a full day at the centre.",
+      "neighbourhood": "The centre is on Rama I Road in Ratchaprasong. Events and seasonal promotions add to the activity around the shops. There are many different areas within the large complex.",
+      "business": "A shop here can bring a new collection close to well-known fashion brands. There is room for a strong window display and a clear brand message. Different areas of the centre offer different settings for a launch.",
+      "beyond": "Restaurants, beauty stores, technology shops and entertainment bring people to the centre throughout the day. Fashion is part of a much wider shopping offer.",
+      "unknown": "Available spaces and nearby shops vary by date. Details of events, visitor numbers and the location of each space are available on enquiry.",
+      "size": 60,
+      "rent": 168000,
+      "setup": 35000,
+      "deposit": 30000,
+      "offer": "Open-front showcase",
+      "terms": "A 60 m² space with clothing rails, a small fitting area and a brand display. The setup price covers basic rails, lighting and a counter. Staff, stock, payment equipment, electricity and taxes cost extra.",
+      "photoAuthor": "Slyronit",
+      "photoLicense": "CC BY-SA 4.0",
+      "photoPage": "https://commons.wikimedia.org/wiki/File:CentralWorld,_Bangkok.jpg",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sources": [
+        [
+          "Venue and address",
+          "https://www.centralworld.co.th/en"
+        ],
+        [
+          "Fashion offer",
+          "https://centralworld.co.th/en/news/CTW-A-Practical-Muslim-Traveller"
+        ],
+        [
+          "Transport and services",
+          "https://www.centralworld.co.th/en/services"
+        ]
+      ],
+      "rents": [
+        {
+          "area": 20,
+          "days": 7,
+          "values": [
+            30800,
+            25200,
+            28000,
+            36400
+          ]
+        },
+        {
+          "area": 20,
+          "days": 14,
+          "values": [
+            61600,
+            50400,
+            56000,
+            72800
+          ]
+        },
+        {
+          "area": 20,
+          "days": 28,
+          "values": [
+            123200,
+            100800,
+            112000,
+            145600
+          ]
+        },
+        {
+          "area": 40,
+          "days": 7,
+          "values": [
+            61600,
+            50400,
+            56000,
+            72800
+          ]
+        },
+        {
+          "area": 40,
+          "days": 14,
+          "values": [
+            123200,
+            100800,
+            112000,
+            145600
+          ]
+        },
+        {
+          "area": 40,
+          "days": 28,
+          "values": [
+            246400,
+            201600,
+            224000,
+            291200
+          ]
+        },
+        {
+          "area": 60,
+          "days": 7,
+          "values": [
+            92400,
+            75600,
+            84000,
+            109200
+          ]
+        },
+        {
+          "area": 60,
+          "days": 14,
+          "values": [
+            184800,
+            151200,
+            168000,
+            218400
+          ]
+        },
+        {
+          "area": 60,
+          "days": 28,
+          "values": [
+            369600,
+            302400,
+            336000,
+            436800
+          ]
+        }
+      ],
+      "charges": [
+        {
+          "area": 20,
+          "space": 0,
+          "retail": 11700,
+          "brand": 17500,
+          "deposit": 10000
+        },
+        {
+          "area": 40,
+          "space": 0,
+          "retail": 23300,
+          "brand": 35000,
+          "deposit": 20000
+        },
+        {
+          "area": 60,
+          "space": 0,
+          "retail": 35000,
+          "brand": 52500,
+          "deposit": 30000
+        }
+      ]
+    },
+    {
+      "slug": "siam-center",
+      "name": "Siam Center",
+      "area": "Siam",
+      "line": "An address for new ideas.",
+      "type": "Thai design · Street fashion · Creative retail",
+      "rail": "BTS Siam",
+      "access": "Siam Center connects to BTS Siam at Exit 2. Both the Sukhumvit and Silom train lines stop here.",
+      "intro": "Give your brand a home among fashion, design and new ideas in the Siam shopping district.",
+      "character": "Siam Center brings together fashion, art, beauty and lifestyle shops. Thai designers are an important part of the offer. Absolute Siam Store sells products from several Thai brands.",
+      "neighbourhood": "Siam Paragon is next door, and Siam Discovery is nearby. Visitors can move between several shopping centres in the same area. The BTS connection makes the journey easy.",
+      "business": "This is a place for new styles and brands with a clear identity. Clothing, accessories and creative displays are part of the shopping experience. A small collection can sit alongside Thai fashion and international styles.",
+      "beyond": "Beauty products, lifestyle shops, food and creative events add to the fashion offer. Visitors can explore more than clothing during their visit.",
+      "unknown": "The final space, fitting-room arrangements and nearby brands are confirmed with each proposal. Promotion within the centre is available by agreement.",
+      "size": 40,
+      "rent": 112000,
+      "setup": 25000,
+      "deposit": 20000,
+      "offer": "Collection studio",
+      "terms": "A 40 m² space for a small collection, trying on clothes and talking with customers. Basic rails, a mirror and a counter are included in the setup price. Staff, stock, payment equipment, electricity and taxes cost extra.",
+      "photoAuthor": "Idea Works Communications",
+      "photoLicense": "CC BY-SA 4.0",
+      "photoPage": "https://commons.wikimedia.org/wiki/File:Siam_Center_official.jpg",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "sources": [
+        [
+          "Positioning and floor guide",
+          "https://www.siamcenter.co.th/en"
+        ],
+        [
+          "Multi-brand fashion",
+          "https://www.siamcenter.co.th/en/blog/saimcenter-mulibrandstore-hotlist-0726"
+        ],
+        [
+          "Transport",
+          "https://www.siamcenter.co.th/en/getting-here"
+        ]
+      ],
+      "rents": [
+        {
+          "area": 20,
+          "days": 7,
+          "values": [
+            30800,
+            25200,
+            28000,
+            36400
+          ]
+        },
+        {
+          "area": 20,
+          "days": 14,
+          "values": [
+            61600,
+            50400,
+            56000,
+            72800
+          ]
+        },
+        {
+          "area": 20,
+          "days": 28,
+          "values": [
+            123200,
+            100800,
+            112000,
+            145600
+          ]
+        },
+        {
+          "area": 40,
+          "days": 7,
+          "values": [
+            61600,
+            50400,
+            56000,
+            72800
+          ]
+        },
+        {
+          "area": 40,
+          "days": 14,
+          "values": [
+            123200,
+            100800,
+            112000,
+            145600
+          ]
+        },
+        {
+          "area": 40,
+          "days": 28,
+          "values": [
+            246400,
+            201600,
+            224000,
+            291200
+          ]
+        },
+        {
+          "area": 60,
+          "days": 7,
+          "values": [
+            92400,
+            75600,
+            84000,
+            109200
+          ]
+        },
+        {
+          "area": 60,
+          "days": 14,
+          "values": [
+            184800,
+            151200,
+            168000,
+            218400
+          ]
+        },
+        {
+          "area": 60,
+          "days": 28,
+          "values": [
+            369600,
+            302400,
+            336000,
+            436800
+          ]
+        }
+      ],
+      "charges": [
+        {
+          "area": 20,
+          "space": 0,
+          "retail": 12500,
+          "brand": 18800,
+          "deposit": 10000
+        },
+        {
+          "area": 40,
+          "space": 0,
+          "retail": 25000,
+          "brand": 37500,
+          "deposit": 20000
+        },
+        {
+          "area": 60,
+          "space": 0,
+          "retail": 37500,
+          "brand": 56300,
+          "deposit": 30000
+        }
+      ]
+    },
+    {
+      "slug": "terminal-21-asok",
+      "name": "Terminal 21 Asok",
+      "area": "Asok · Sukhumvit",
+      "line": "Where journeys meet shopping.",
+      "type": "Local shops · Fashion · Dining",
+      "rail": "BTS Asok + MRT Sukhumvit",
+      "access": "BTS Asok Exit 1 and MRT Sukhumvit Exit 3 connect to the mall. Visitors can reach it using either train system.",
+      "intro": "Bring your collection to a shopping centre where local shops meet visitors from across the city.",
+      "character": "Terminal 21 Asok has an airport theme. Different areas are based on cities such as Tokyo, London and San Francisco. Local shops sell fashion alongside restaurants and entertainment.",
+      "neighbourhood": "The mall is at Sukhumvit Soi 19 in the Asok business area. Its two train connections make it easy to include shopping in a journey through Bangkok.",
+      "business": "Smaller shops give this centre a different feel from a row of large international stores. A compact space can show a focused clothing range, with a clear display and prices that are easy to see.",
+      "beyond": "Food and film are also part of the centre's offer. People can combine a meal or a cinema visit with time in the shops.",
+      "unknown": "Space is offered on several floors. Storage, fitting rooms and the shops next to each space depend on the proposal. Visitor information is available on enquiry.",
+      "size": 35,
+      "rent": 84000,
+      "setup": 18000,
+      "deposit": 15000,
+      "offer": "Compact retail stop",
+      "terms": "A 35 m² space for a small product range and sales counter. The setup price covers movable rails, signs and a mirror. A fitting area and extra storage are available by agreement. Staff, stock, payment equipment, electricity and taxes cost extra.",
+      "photoAuthor": "Francisco Anzola",
+      "photoLicense": "CC BY 2.0",
+      "photoPage": "https://commons.wikimedia.org/wiki/File:Terminal_21_Asok.jpg",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sources": [
+        [
+          "Operator's destination profile",
+          "https://lhmh.co.th/portfolio/terminal-21-asok-bangkok"
+        ],
+        [
+          "BTS and MRT access",
+          "https://www.terminal21.co.th/asok/howtogo/en"
+        ],
+        [
+          "Official venue",
+          "https://www.terminal21.co.th/asok/"
+        ]
+      ],
+      "rents": [
+        {
+          "area": 20,
+          "days": 7,
+          "values": [
+            26400,
+            21600,
+            24000,
+            31200
+          ]
+        },
+        {
+          "area": 20,
+          "days": 14,
+          "values": [
+            52800,
+            43200,
+            48000,
+            62400
+          ]
+        },
+        {
+          "area": 20,
+          "days": 28,
+          "values": [
+            105600,
+            86400,
+            96000,
+            124800
+          ]
+        },
+        {
+          "area": 40,
+          "days": 7,
+          "values": [
+            52800,
+            43200,
+            48000,
+            62400
+          ]
+        },
+        {
+          "area": 40,
+          "days": 14,
+          "values": [
+            105600,
+            86400,
+            96000,
+            124800
+          ]
+        },
+        {
+          "area": 40,
+          "days": 28,
+          "values": [
+            211200,
+            172800,
+            192000,
+            249600
+          ]
+        },
+        {
+          "area": 60,
+          "days": 7,
+          "values": [
+            79200,
+            64800,
+            72000,
+            93600
+          ]
+        },
+        {
+          "area": 60,
+          "days": 14,
+          "values": [
+            158400,
+            129600,
+            144000,
+            187200
+          ]
+        },
+        {
+          "area": 60,
+          "days": 28,
+          "values": [
+            316800,
+            259200,
+            288000,
+            374400
+          ]
+        }
+      ],
+      "charges": [
+        {
+          "area": 20,
+          "space": 0,
+          "retail": 10300,
+          "brand": 15400,
+          "deposit": 8600
+        },
+        {
+          "area": 40,
+          "space": 0,
+          "retail": 20600,
+          "brand": 30900,
+          "deposit": 17100
+        },
+        {
+          "area": 60,
+          "space": 0,
+          "retail": 30900,
+          "brand": 46300,
+          "deposit": 25700
+        }
+      ]
+    },
+    {
+      "slug": "siam-paragon",
+      "name": "Siam Paragon",
+      "area": "Siam",
+      "line": "A prominent place to be seen.",
+      "type": "Luxury fashion · International retail · Lifestyle",
+      "rail": "BTS Siam",
+      "access": "Siam Paragon connects to BTS Siam at Exit 3. Both the Sukhumvit and Silom lines stop at this station.",
+      "intro": "Show your brand in a well-known Bangkok shopping centre with international fashion, restaurants and entertainment.",
+      "character": "Siam Paragon is known for luxury fashion. It also has brands such as H&M, Uniqlo, Zara and United Arrows. Visitors can find both luxury labels and everyday clothing in the same centre.",
+      "neighbourhood": "The centre is in the Siam shopping district, next to Siam Center. The BTS station and nearby malls make it easy to visit several shopping destinations in one trip.",
+      "business": "A fashion shop here puts a collection in a setting with well-known brands and high-quality displays. Spaces on different floors offer different surroundings and nearby shops.",
+      "beyond": "Home products, technology, beauty, food and entertainment add to the fashion offer. Visitors have many reasons to spend time at the centre.",
+      "unknown": "The floor, display design and signs are agreed with each brand. Promotional support and details of nearby shops are available with the space proposal.",
+      "size": 45,
+      "rent": 196000,
+      "setup": 45000,
+      "deposit": 40000,
+      "offer": "Brand showcase",
+      "terms": "A 45 m² space with a product display, sales counter and small fitting area. The setup price includes a finished counter, display lighting and branded panels. Staff, stock, payment equipment, electricity and taxes cost extra.",
+      "photoAuthor": "Welcome to Thailand",
+      "photoLicense": "CC0 1.0",
+      "photoPage": "https://commons.wikimedia.org/wiki/File:Siam_Paragon_ext%C3%A9rieur_2.jpg",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sources": [
+        [
+          "Venue positioning",
+          "https://www.siamparagon.co.th/about"
+        ],
+        [
+          "Retail directory",
+          "https://www.siamparagon.co.th/directory"
+        ],
+        [
+          "Transport",
+          "https://www.siamparagon.co.th/getting-here"
+        ]
+      ],
+      "rents": [
+        {
+          "area": 20,
+          "days": 7,
+          "values": [
+            47900,
+            39200,
+            43600,
+            56600
+          ]
+        },
+        {
+          "area": 20,
+          "days": 14,
+          "values": [
+            95800,
+            78400,
+            87100,
+            113200
+          ]
+        },
+        {
+          "area": 20,
+          "days": 28,
+          "values": [
+            191600,
+            156800,
+            174200,
+            226500
+          ]
+        },
+        {
+          "area": 40,
+          "days": 7,
+          "values": [
+            95800,
+            78400,
+            87100,
+            113200
+          ]
+        },
+        {
+          "area": 40,
+          "days": 14,
+          "values": [
+            191600,
+            156800,
+            174200,
+            226500
+          ]
+        },
+        {
+          "area": 40,
+          "days": 28,
+          "values": [
+            383300,
+            313600,
+            348400,
+            453000
+          ]
+        },
+        {
+          "area": 60,
+          "days": 7,
+          "values": [
+            143700,
+            117600,
+            130700,
+            169900
+          ]
+        },
+        {
+          "area": 60,
+          "days": 14,
+          "values": [
+            287500,
+            235200,
+            261300,
+            339700
+          ]
+        },
+        {
+          "area": 60,
+          "days": 28,
+          "values": [
+            574900,
+            470400,
+            522700,
+            679500
+          ]
+        }
+      ],
+      "charges": [
+        {
+          "area": 20,
+          "space": 0,
+          "retail": 20000,
+          "brand": 30000,
+          "deposit": 17800
+        },
+        {
+          "area": 40,
+          "space": 0,
+          "retail": 40000,
+          "brand": 60000,
+          "deposit": 35600
+        },
+        {
+          "area": 60,
+          "space": 0,
+          "retail": 60000,
+          "brand": 90000,
+          "deposit": 53300
+        }
+      ]
+    },
+    {
+      "slug": "central-embassy",
+      "name": "Central Embassy",
+      "area": "Ploen Chit",
+      "line": "A considered setting for your brand.",
+      "type": "Luxury · Design · Dining",
+      "rail": "BTS Phloen Chit",
+      "access": "Central Embassy connects to BTS Phloen Chit. It stands where Ploen Chit Road meets Wireless Road.",
+      "intro": "Present your brand in a stylish setting with luxury fashion, design, food and hotel services.",
+      "character": "Central Embassy brings together international and Thai fashion, beauty, design and restaurants. Its curved building and open interior are part of the experience.",
+      "neighbourhood": "Park Hyatt Bangkok is above the shopping centre. On Level 6, Open House brings books, food and shared spaces together. People can spend time here as well as shop.",
+      "business": "A smaller shop can offer time for customers to explore products and talk with staff. Display units, lighting and packaging can form part of a complete brand experience in this luxury setting.",
+      "beyond": "Open House adds books, dining and places to meet. The centre also offers services such as personal shopping and language support.",
+      "unknown": "Space design and opening dates are agreed with each brand. Details of visitors and the number of people passing each space are available on enquiry.",
+      "size": 40,
+      "rent": 210000,
+      "setup": 55000,
+      "deposit": 50000,
+      "offer": "Retail salon",
+      "terms": "A 40 m² space with product displays, a small fitting area and a table for customer appointments. The setup price includes display units and lighting. Staff, stock, payment equipment, electricity and taxes cost extra.",
+      "photoAuthor": "Ryan Tang",
+      "photoLicense": "CC0 1.0",
+      "photoPage": "https://commons.wikimedia.org/wiki/File:Vibrant_Dusk_(Unsplash).jpg",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sources": [
+        [
+          "Venue and address",
+          "https://www.centralembassy.com/about/"
+        ],
+        [
+          "Open House",
+          "https://www.centralembassy.com/anchor/openhouse/"
+        ],
+        [
+          "Services",
+          "https://www.centralembassy.com/service/"
+        ],
+        [
+          "Rail connection · Tourism Authority of Thailand",
+          "https://www.thailandtravel.or.jp/central-embassy/"
+        ]
+      ],
+      "rents": [
+        {
+          "area": 20,
+          "days": 7,
+          "values": [
+            57800,
+            47300,
+            52500,
+            68300
+          ]
+        },
+        {
+          "area": 20,
+          "days": 14,
+          "values": [
+            115500,
+            94500,
+            105000,
+            136500
+          ]
+        },
+        {
+          "area": 20,
+          "days": 28,
+          "values": [
+            231000,
+            189000,
+            210000,
+            273000
+          ]
+        },
+        {
+          "area": 40,
+          "days": 7,
+          "values": [
+            115500,
+            94500,
+            105000,
+            136500
+          ]
+        },
+        {
+          "area": 40,
+          "days": 14,
+          "values": [
+            231000,
+            189000,
+            210000,
+            273000
+          ]
+        },
+        {
+          "area": 40,
+          "days": 28,
+          "values": [
+            462000,
+            378000,
+            420000,
+            546000
+          ]
+        },
+        {
+          "area": 60,
+          "days": 7,
+          "values": [
+            173300,
+            141800,
+            157500,
+            204800
+          ]
+        },
+        {
+          "area": 60,
+          "days": 14,
+          "values": [
+            346500,
+            283500,
+            315000,
+            409500
+          ]
+        },
+        {
+          "area": 60,
+          "days": 28,
+          "values": [
+            693000,
+            567000,
+            630000,
+            819000
+          ]
+        }
+      ],
+      "charges": [
+        {
+          "area": 20,
+          "space": 0,
+          "retail": 27500,
+          "brand": 41300,
+          "deposit": 25000
+        },
+        {
+          "area": 40,
+          "space": 0,
+          "retail": 55000,
+          "brand": 82500,
+          "deposit": 50000
+        },
+        {
+          "area": 60,
+          "space": 0,
+          "retail": 82500,
+          "brand": 123800,
+          "deposit": 75000
+        }
+      ]
+    }
+  ]
+}
