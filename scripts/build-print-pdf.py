@@ -1,5 +1,5 @@
 """Build the two A4 booklets from build-print.mjs's shared print model.
-Requires reportlab and Pillow. Fonts default to Windows Arial/Georgia; override BB_FONT_DIR.
+Requires reportlab, Pillow and PyMuPDF. Fonts default to Windows Arial/Georgia; override BB_FONT_DIR.
 """
 import json,os,sys,html
 from pathlib import Path
@@ -15,7 +15,7 @@ from io import BytesIO
 from reportlab.lib.utils import ImageReader
 ROOT=Path(__file__).resolve().parent.parent
 DATA=json.loads((ROOT/'print/print-data.json').read_text(encoding='utf-8'))
-FONT_DIR=Path(os.environ.get('BB_FONT_DIR','C:/Windows/Fonts'))
+FONT_DIR=Path(os.environ.get('BB_FONT_DIR',str(ROOT/'.print-fonts') if (ROOT/'.print-fonts').exists() else 'C:/Windows/Fonts'))
 for name,file in [('Body','arial.ttf'),('BodyBold','arialbd.ttf'),('BodyItalic','ariali.ttf'),('Title','georgia.ttf'),('TitleItalic','georgiai.ttf')]:
     pdfmetrics.registerFont(TTFont(name,str(FONT_DIR/file)))
 pdfmetrics.registerFontFamily('Body',normal='Body',bold='BodyBold',italic='BodyItalic',boldItalic='BodyBold')
@@ -61,14 +61,11 @@ class Book:
  def h2(self,text):
     self.y-=5;self.p(e(text),'h2',5)
  def table(self,headers,rows,widths,numeric=False,group=False):
-    cells=[[Paragraph(str(s),STYLES['tablebold' if i==0 else 'table']) for s in row] for i,row in enumerate([headers]+rows)]
+    cells=[]
+    for ri,row in enumerate([headers]+rows):
+      cells.append([Paragraph(str(value),ParagraphStyle('cell',parent=STYLES['tablebold' if ri==0 else 'table'],alignment=2 if numeric and col >= (2 if group else 1) else 0)) for col,value in enumerate(row)])
     tab=Table(cells,colWidths=widths,repeatRows=1,hAlign='LEFT')
     cmds=[('VALIGN',(0,0),(-1,-1),'TOP'),('BACKGROUND',(0,0),(-1,0),PALE),('LINEABOVE',(0,0),(-1,0),1,INK),('LINEBELOW',(0,0),(-1,-1),.4,LINE),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('TOPPADDING',(0,0),(-1,-1),4 if self.compact else 7),('BOTTOMPADDING',(0,0),(-1,-1),4 if self.compact else 7)]
-    if numeric:
-      # Paragraph alignment is per-cell so numbers line up exactly in columns.
-      for r in range(1,len(cells)):
-       for col in range(2 if group else 1,len(headers)):
-        cells[r][col].style=ParagraphStyle('num',parent=STYLES['table'],alignment=2)
     if group:
       for row in (1,4,7):cmds.append(('LINEABOVE',(0,row),(-1,row),.8,colors.HexColor('#92a491')))
     tab.setStyle(TableStyle(cmds)); w,h=tab.wrap(WIDTH,H)
@@ -84,33 +81,8 @@ class Book:
     self.c.showPage()
  def save(self):self.finish();self.c.save()
 def location_book():
- b=Book('brands-bangkok-locations.pdf','Location guide','Location guide');b.start()
- b.heading('The location collection','Your brand. Bangkok’s next chapter.','Bring your business to Bangkok. Discover five shopping destinations for international fashion and retail brands.')
- b.p('Brands Bangkok brings the city closer to overseas fashion and retail businesses. Our guide introduces five centres, from local fashion and Thai design to international and luxury brands.')
- b.table(['Location','Retail setting','Rail access'],[[e(v['name']),e(v['type']),e(v['rail'])]for v in DATA['venues']],[125,233,WIDTH-358])
- b.h2('Business services')
- for title,text in DATA['services']:
-    b.p(e(title),'h3',3);b.p(e(text),'body',7)
- b.p('Short-term rates are available in the separate <i>Retail spaces &amp; rates</i> booklet. Venue websites and photography credits: '+link('bhteach.github.io/brands-bangkok/sources.html','https://bhteach.github.io/brands-bangkok/sources.html'),'small',0)
- for v in DATA['venues']:
-    b.start();b.heading(v['area']+' · Bangkok',v['name'],v['intro']);b.p(e(v['line']),'tag',9)
-    h1=b.p('<b>Retail setting</b><br/>'+e(v['type']),'small',x=LEFT,width=WIDTH*.58)
-    h2=b.p('<b>Rail access</b><br/>'+e(v['rail']),'small',x=LEFT+WIDTH*.62,width=WIDTH*.38)
-    b.y-=max(h1,h2)+12
-    # Centre-crop photograph to the same panoramic framing as the web profile.
-    im=PILImage.open(ROOT/'assets'/(v['slug']+'.jpg')).convert('RGB')
-    target=WIDTH/132; current=im.width/im.height
-    if current>target:
-      nw=int(im.height*target);a=(im.width-nw)//2;im=im.crop((a,0,a+nw,im.height))
-    else:
-      nh=int(im.width/target);a=(im.height-nh)//2;im=im.crop((0,a,im.width,a+nh))
-    b.c.drawImage(ImageReader(im),LEFT,b.y-132,width=WIDTH,height=132);b.y-=138
-    b.p('Photo: '+link(v['photoAuthor'],v['photoPage'])+' · '+link(v['photoLicense'],v['licenseUrl'])+' · Resized and cropped. Original: Wikimedia Commons.','tiny',8)
-    for title,key in DATA['sections']:
-      b.h2(title);b.p(e(v[key]),'body',7)
-    b.y-=3
-    b.p('<b>Published information:</b> '+' · '.join(link(label,url)for label,url in v['sources'])+'<br/>Full links and photo credits: '+link('bhteach.github.io/brands-bangkok/sources.html','https://bhteach.github.io/brands-bangkok/sources.html'),'tiny',0)
- b.save()
+ from location_design import build
+ build(Book,DATA,ROOT)
 def rental_book():
  b=Book('brands-bangkok-rental-rates.pdf','Retail spaces & rates','Retail spaces & rates');b.start();b.compact=True
  b.heading('Business services','Retail spaces & rates.','Space for your next collection. Rental options at five Bangkok shopping centres.')
@@ -141,4 +113,9 @@ def rental_book():
  b.save()
 if __name__=='__main__':
  location_book();rental_book()
+ import pymupdf
+ vector_dir=ROOT/'print/location-pages';vector_dir.mkdir(exist_ok=True)
+ with pymupdf.open(ROOT/'print/brands-bangkok-locations.pdf') as document:
+  for i,page in enumerate(document,1):
+   (vector_dir/f'page-{i}.svg').write_text(page.get_svg_image(text_as_path=True),encoding='utf-8')
  print('Built two 6-page A4 PDF booklets.')

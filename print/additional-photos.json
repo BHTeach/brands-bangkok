@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "centralworld",
+    "id": "centralworld-exterior",
+    "title": "File:CentralWorld exterior.jpg",
+    "file": "assets/centralworld-exterior.jpg",
+    "caption": "Exterior",
+    "author": "Christophe95",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:CentralWorld_exterior.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "slug": "centralworld",
+    "id": "centralworld-shopping",
+    "title": "File:CentralWorld Level 2 new shops 201801.jpg",
+    "file": "assets/centralworld-shopping.jpg",
+    "caption": "Shopping interior",
+    "author": "Wpcpey",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:CentralWorld_Level_2_new_shops_201801.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "slug": "siam-center",
+    "id": "siam-center-shopping",
+    "title": "File:Siam Center Level 1 shops 2018.jpg",
+    "file": "assets/siam-center-shopping.jpg",
+    "caption": "Shopping interior",
+    "author": "Wpcpey",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Siam_Center_Level_1_shops_2018.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "slug": "terminal-21-asok",
+    "id": "terminal-21-asok-shopping",
+    "title": "File:Terminal 21 Level 1 shops 2018.jpg",
+    "file": "assets/terminal-21-asok-shopping.jpg",
+    "caption": "Shopping interior",
+    "author": "Wpcpey",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Terminal_21_Level_1_shops_2018.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "slug": "siam-paragon",
+    "id": "siam-paragon-facade",
+    "title": "File:Siamparagon Official.jpg",
+    "file": "assets/siam-paragon-facade.jpg",
+    "caption": "Exterior",
+    "author": "Idea Works Communications",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Siamparagon_Official.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "slug": "siam-paragon",
+    "id": "siam-paragon-shopping",
+    "title": "File:Siam Paragon Level M 201801.jpg",
+    "file": "assets/siam-paragon-shopping.jpg",
+    "caption": "Shopping interior",
+    "author": "Wpcpey",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Siam_Paragon_Level_M_201801.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "slug": "central-embassy",
+    "id": "central-embassy-shopping",
+    "title": "File:Central Embassy Level 3 Shops 201801.jpg",
+    "file": "assets/central-embassy-shopping.jpg",
+    "caption": "Shopping interior",
+    "author": "Wpcpey",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Central_Embassy_Level_3_Shops_201801.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  }
+]

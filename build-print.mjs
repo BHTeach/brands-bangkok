@@ -47,16 +47,22 @@ let locations=page(h('The location collection','Your brand. Bangkok’s next cha
  '<p>Brands Bangkok brings the city closer to overseas fashion and retail businesses. Our guide introduces five centres, from local fashion and Thai design to international and luxury brands.</p>'+
  table(['Location','Retail setting','Rail access'],venues.map(v=>[esc(v.name),esc(v.type),esc(v.rail)]),'directory')+
  '<h2>Business services</h2>'+services.map(([a,b])=>'<h3>'+a+'</h3><p>'+b+'</p>').join('')+
- '<p class="small">Short-term rates are available in the separate <em>Retail spaces &amp; rates</em> booklet. Venue websites and photography credits: <a href="https://bhteach.github.io/brands-bangkok/sources.html">bhteach.github.io/brands-bangkok/sources.html</a></p>','Location guide',1,'location-guide');
+ '<p class="small">Short-term rates are available in the separate <em>Retail spaces &amp; rates</em> booklet.</p>','Location guide',1,'location-guide');
 for(const [i,v] of venues.entries()){
- const sources=v.sources.map(([label,url])=>'<a href="'+esc(url)+'">'+esc(label)+'</a>').join(' · ');
  locations+=page(h(esc(v.area)+' · Bangkok',esc(v.name),esc(v.intro))+
  '<p class="tagline">'+esc(v.line)+'</p><div class="facts"><p><strong>Retail setting</strong><br>'+esc(v.type)+'</p><p><strong>Rail access</strong><br>'+esc(v.rail)+'</p></div>'+
  '<img class="profile-photo" src="assets/'+v.slug+'.jpg" alt="'+esc(v.name)+' in Bangkok">'+
  '<p class="credit">Photo: <a href="'+esc(v.photoPage)+'">'+esc(v.photoAuthor)+'</a> · <a href="'+v.licenseUrl+'">'+esc(v.photoLicense)+'</a> · Resized and cropped. Original: Wikimedia Commons.</p>'+
- paras.map(([title,key])=>'<h2>'+title+'</h2><p>'+esc(v[key])+'</p>').join('')+
- '<div class="references"><strong>Published information:</strong> '+sources+'<br>Full links and photo credits: bhteach.github.io/brands-bangkok/sources.html</div>','Location guide',i+2,v.slug);
+ paras.map(([title,key])=>'<h2>'+title+'</h2><p>'+esc(v[key])+'</p>').join(''),'Location guide',i+2,v.slug);
 }
+
+// The print view uses the PDF's vector pages, with a semantic text version for accessibility.
+const locationSections=locations.match(/<section class="paper"[\s\S]*?<\/section>/g);
+locations=locationSections.map((section,i)=>{
+ const readable=section.replace(/^<section[^>]*>/,'').replace(/<\/section>$/,'').replace(/<div class="print-brand">[\s\S]*?<\/div>/,'').replace(/<footer>[\s\S]*?<\/footer>/,'').replace(/<img[^>]*>/g,'').replace(/<p class="credit">[\s\S]*?<\/p>/,'');
+ return '<section class="paper premium"><img class="premium-page" src="print/location-pages/page-'+(i+1)+'.svg?v=20261108" alt=""><div class="print-transcript">'+readable+'</div></section>';
+}).join('');
+
 let rental=page(h('Business services','Retail spaces &amp; rates.','Space for your next collection. Rental options at five Bangkok shopping centres.')+
  '<p>Rates vary by location, season, length of stay and space size. Each location has its own rate page.</p>'+
  '<h2>Space and stay options</h2>'+table(['Option','Choices'],[['Space size','Compact · 20 m² / Standard · 40 m² / Large · 60 m²'],['Length of stay','1 week · 7 days / 2 weeks · 14 days / 4 weeks · 28 days'],['Season','Feb – Apr / May – Jul / Aug – Oct / Nov – Jan']])+
@@ -80,8 +86,8 @@ for(const[i,v]of model.venues.entries()){
 const index=await fs.readFile(path.join(root,'index.html'),'utf8');
 const prefix=index.split('<div id="site-content">')[0]
  .replace(/<title>.*?<\/title>/,'<title>Printed booklets | Brands Bangkok</title>')
- .replace('</head>','<link rel="stylesheet" href="assets/print.css"></head>');
-function output(body,kind){return prefix+'<div id="site-content"><div class="print-toolbar"><strong>Brands Bangkok · Printed booklets</strong><nav><a href="print-locations.html">Location guide</a><a href="print-rental.html">Retail spaces &amp; rates</a><a href="print/brands-bangkok-locations.pdf">Location guide PDF</a><a href="print/brands-bangkok-rental-rates.pdf">Rental booklet PDF</a></nav><button data-print>Print '+kind+'</button><button data-lock>Lock site</button></div><main>'+body+'</main></div></body></html>';}
+ .replace('</head>','<link rel="stylesheet" href="assets/print.css?v=20261108"></head>');
+function output(body,kind){return prefix+'<div id="site-content"><div class="print-toolbar"><strong>Brands Bangkok · Printed booklets</strong><nav><a href="print-locations.html">Location guide</a><a href="print-rental.html">Retail spaces &amp; rates</a><a href="print/brands-bangkok-locations.pdf?v=20261108">Location guide PDF</a><a href="print/brands-bangkok-rental-rates.pdf?v=20261108">Rental booklet PDF</a></nav><button data-print>Print '+kind+'</button><button data-lock>Lock site</button></div><main>'+body+'</main></div></body></html>';}
 await fs.writeFile(path.join(root,'print-pack.html'),output(locations+rental,'both booklets'));
 await fs.writeFile(path.join(root,'print-locations.html'),output(locations,'location guide'));
 await fs.writeFile(path.join(root,'print-rental.html'),output(rental,'rental booklet'));

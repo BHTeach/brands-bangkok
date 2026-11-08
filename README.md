@@ -46,7 +46,7 @@ After changing venue data, prices or the exchange rate, rebuild both HTML and PD
 
 ~~~sh
 node build.mjs
-python -m pip install reportlab Pillow
+python -m pip install reportlab Pillow PyMuPDF
 python scripts/build-print-pdf.py
 ~~~
 
@@ -69,3 +69,9 @@ The password form runs locally and makes no authentication request. There are no
 The estimate includes a Currency Converter for THB and JPY. All line items and the total switch together; underlying prices remain in THB so repeated switching does not compound rounding. JPY display rounds to whole yen.
 
 The fixed rate in exchange-rate.json is 1 THB = JPY 4.72877, checked from Wise on 5 November 2026. It is a dated rate snapshot, not a continuously refreshed feed. The displayed rate, date and source come from that same file. The printable booklets use this same dated rate. To refresh it, update exchange-rate.json and rebuild the site.
+
+## Printed guide design
+
+The location booklet uses five individual compositions in scripts/location_design.py, with colour palettes and paired exterior/interior or area photographs. Image metadata is in print/additional-photos.json; essential photo attributions remain in the booklet, while venue research notes are omitted from its pages. The web print views use vector pages exported from the PDF, with accessible text alongside them.
+
+For Linux builds, scripts/prepare-print-assets.py downloads credited photos and prepares Liberation Sans and Gelasio fonts in .print-fonts (requires fonttools and fonts-liberation). Windows builds can continue using Arial and Georgia. scripts/verify-print.py checks paragraph coverage, prices, numeric column alignment and A4 sizes. The Build printed booklets workflow can rebuild and save the print files; it also generates previews.

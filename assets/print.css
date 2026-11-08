@@ -36,3 +36,12 @@ body{margin:0;background:#e8e9e5;color:#192a27;font:11pt/1.35 Arial,sans-serif}
 @media print{html,body{margin:0!important;background:white}.print-toolbar{display:none!important}.paper{margin:0;box-shadow:none;width:210mm;height:297mm;min-height:0;overflow:hidden;print-color-adjust:exact;-webkit-print-color-adjust:exact}.paper:last-child{break-after:auto}a{text-decoration:none}#access-gate{display:none!important}html.access-locked #access-gate{display:block!important}html.access-locked #site-content{display:none!important}}
 
 .paper .rents th,.paper .rents td,.paper .charges th,.paper .charges td{padding-top:5px;padding-bottom:5px}
+
+/* Match every numeric heading to the values beneath it. */
+.paper .charges thead th:not(:first-child),.paper .rents thead th:nth-child(n+3){text-align:right}
+.paper .charges{table-layout:fixed}
+.paper .charges th:first-child{width:55px}
+/* Vector pages keep the individually composed print designs identical to the PDF. */
+.paper.premium{padding:0;width:210mm;height:297mm;min-height:0}
+.premium-page{display:block;width:100%;height:100%;object-fit:contain}
+.print-transcript{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:normal}
