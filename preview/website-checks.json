@@ -145,5 +145,7 @@
     "JavaScript-disabled gate"
   ],
   "menuChecked": true,
+  "accessMapChecked": true,
+  "accessBoxesChecked": 5,
   "browserErrors": []
 }
