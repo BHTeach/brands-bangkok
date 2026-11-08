@@ -68,7 +68,7 @@ for(const [i,v] of venues.entries()){
 const locationSections=locations.match(/<section class="paper"[\s\S]*?<\/section>/g);
 locations=locationSections.map((section,i)=>{
  const readable=section.replace(/^<section[^>]*>/,'').replace(/<\/section>$/,'').replace(/<div class="print-brand">[\s\S]*?<\/div>/,'').replace(/<footer>[\s\S]*?<\/footer>/,'').replace(/<img[^>]*>/g,'').replace(/<p class="credit">[\s\S]*?<\/p>/,'');
- return '<section class="paper premium"><img class="premium-page" src="print/location-pages/page-'+(i+1)+'.svg?v=20261108-access" alt=""><div class="print-transcript">'+readable+'</div></section>';
+ return '<section class="paper premium"><img class="premium-page" src="print/location-pages/page-'+(i+1)+'.svg?v=20261108-neighbourhood" alt=""><div class="print-transcript">'+readable+'</div></section>';
 }).join('');
 
 let rental=page(h('Business services','Retail spaces &amp; rates.','Space for your next collection. Rental options at five Bangkok shopping centres.')+
@@ -94,8 +94,8 @@ for(const[i,v]of model.venues.entries()){
 const index=await fs.readFile(path.join(root,'index.html'),'utf8');
 const prefix=index.split('<div id="site-content">')[0]
  .replace(/<title>.*?<\/title>/,'<title>Printed booklets | Brands Bangkok</title>')
- .replace('</head>','<link rel="stylesheet" href="assets/print.css?v=20261108-access"></head>');
-function output(body,kind){return prefix+'<div id="site-content"><div class="print-toolbar"><strong>Brands Bangkok · Printed booklets</strong><nav><a href="print-locations.html">Location guide</a><a href="print-rental.html">Retail spaces &amp; rates</a><a href="print/brands-bangkok-locations.pdf?v=20261108-access">Location guide PDF</a><a href="print/brands-bangkok-rental-rates.pdf?v=20261108-access">Rental booklet PDF</a></nav><button data-print>Print '+kind+'</button><button data-lock>Lock site</button></div><main>'+body+'</main></div></body></html>';}
+ .replace('</head>','<link rel="stylesheet" href="assets/print.css?v=20261108-neighbourhood"></head>');
+function output(body,kind){return prefix+'<div id="site-content"><div class="print-toolbar"><strong>Brands Bangkok · Printed booklets</strong><nav><a href="print-locations.html">Location guide</a><a href="print-rental.html">Retail spaces &amp; rates</a><a href="print/brands-bangkok-locations.pdf?v=20261108-neighbourhood">Location guide PDF</a><a href="print/brands-bangkok-rental-rates.pdf?v=20261108-neighbourhood">Rental booklet PDF</a></nav><button data-print>Print '+kind+'</button><button data-lock>Lock site</button></div><main>'+body+'</main></div></body></html>';}
 await fs.writeFile(path.join(root,'print-pack.html'),output(locations+rental,'both booklets'));
 await fs.writeFile(path.join(root,'print-locations.html'),output(locations,'location guide'));
 await fs.writeFile(path.join(root,'print-rental.html'),output(rental,'rental booklet'));

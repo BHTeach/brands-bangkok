@@ -131,7 +131,7 @@ def embassy(p,ph):
  p.facts(42,352,245,True)
  p.photo(ph[1],316,94,W-358,270)
  p.photo(ph[0],316,378,W-358,100)
- p.stack([A,D],42,500,245);p.stack([B,C,E],309,500,W-351)
+ p.stack([A,D],42,490,245);p.stack([B,C,E],309,490,W-351)
 def cover(c,root,data):
  p=Page(c,root);p.brand();p.label('The location collection',42,89,W-84)
  p.title('Your brand.<br/>Bangkok’s next chapter.',42,111,W-84,33)
