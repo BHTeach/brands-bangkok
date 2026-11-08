@@ -1,3 +1,4 @@
 .print-deps/
 .print-fonts/
 __pycache__/
+node_modules/

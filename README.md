@@ -75,3 +75,9 @@ The fixed rate in exchange-rate.json is 1 THB = JPY 4.72877, checked from Wise o
 The location booklet uses five individual compositions in scripts/location_design.py, with colour palettes and paired exterior/interior or area photographs. Image metadata is in print/additional-photos.json; essential photo attributions remain in the booklet, while venue research notes are omitted from its pages. The web print views use vector pages exported from the PDF, with accessible text alongside them.
 
 For Linux builds, scripts/prepare-print-assets.py downloads credited photos and prepares Liberation Sans and Gelasio fonts in .print-fonts (requires fonttools and fonts-liberation). Windows builds can continue using Arial and Georgia. scripts/verify-print.py checks paragraph coverage, prices, numeric column alignment and A4 sizes. The Build printed booklets workflow can rebuild and save the print files; it also generates previews.
+
+## Website location themes
+
+Location pages and cards use the same photographs and colour palettes as the printed guide. Palettes are in location-themes.json and build.mjs generates assets/location-themes.css. Photo metadata is shared from print/additional-photos.json; the Sources & photo credits page includes every displayed image. Profiles use a static two-image gallery which stacks on narrow screens. No gallery JavaScript or new runtime dependencies are required.
+
+scripts/verify-website.mjs runs Chromium checks at 1440, 900 and 375 pixels, covering all five profiles, image loading, copy, overflow, mobile navigation, access gates and the rental/currency controls. Run it after node build.mjs with Playwright installed. The Check website design workflow provides the same checks and preview screenshots.

@@ -1,0 +1,39 @@
+name: Check website design
+on:
+  push:
+    branches: [refresh-website-locations]
+    paths:
+      - 'build.mjs'
+      - 'location-themes.json'
+      - 'assets/style.css'
+      - 'scripts/verify-website.mjs'
+      - '.github/workflows/website-checks.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: website-checks-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build website
+        run: node build.mjs
+      - name: Install browser checks
+        run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+      - name: Check layouts and interactions
+        run: node scripts/verify-website.mjs
+      - name: Save checked pages and previews
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/location-themes.css index.html about.html planning.html rental.html sources.html 404.html locations/ print-pack.html print-locations.html print-rental.html preview/
+          git diff --cached --quiet || git commit -m "Build and verify website location themes [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

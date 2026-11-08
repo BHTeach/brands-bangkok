@@ -1,0 +1,27 @@
+{
+  "centralworld": {
+    "accent": "#972f3e",
+    "ink": "#292c35",
+    "paper": "#f6eeeb"
+  },
+  "siam-center": {
+    "accent": "#684392",
+    "ink": "#352840",
+    "paper": "#f1ecf6"
+  },
+  "terminal-21-asok": {
+    "accent": "#167479",
+    "ink": "#1a354b",
+    "paper": "#edf3f2"
+  },
+  "siam-paragon": {
+    "accent": "#9b7941",
+    "ink": "#182f50",
+    "paper": "#f8f5ee"
+  },
+  "central-embassy": {
+    "accent": "#876c43",
+    "ink": "#25483c",
+    "paper": "#f5f3e9"
+  }
+}
