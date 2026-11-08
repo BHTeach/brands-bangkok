@@ -5,5 +5,11 @@
   "rental_prices_checked": 180,
   "charges_checked": 60,
   "alignment_checked": true,
-  "rate": 4.72877
+  "rate": 4.72877,
+  "qr_url": "https://bhteach.github.io/brands-bangkok/",
+  "qr_pages_verified": 2,
+  "qr_scales_verified": [
+    1.5,
+    2.0
+  ]
 }
