@@ -13,8 +13,10 @@ from reportlab.lib.styles import ParagraphStyle
 from PIL import Image as PILImage
 from io import BytesIO
 from reportlab.lib.utils import ImageReader
+from print_qr import draw_website_qr,write_qr_asset
 ROOT=Path(__file__).resolve().parent.parent
 DATA=json.loads((ROOT/'print/print-data.json').read_text(encoding='utf-8'))
+write_qr_asset(ROOT)
 FONT_DIR=Path(os.environ.get('BB_FONT_DIR',str(ROOT/'.print-fonts') if (ROOT/'.print-fonts').exists() else 'C:/Windows/Fonts'))
 for name,file in [('Body','arial.ttf'),('BodyBold','arialbd.ttf'),('BodyItalic','ariali.ttf'),('Title','georgia.ttf'),('TitleItalic','georgiai.ttf')]:
     pdfmetrics.registerFont(TTFont(name,str(FONT_DIR/file)))
@@ -48,6 +50,7 @@ class Book:
     c.setFillColor(INK);c.setFont('BodyBold',13.5);c.drawString(LEFT+46,H-42,'Brands Bangkok')
     c.setFont('Body',8);c.drawString(LEFT+46,H-55,'Fashion. Retail. Possibility.')
     c.setStrokeColor(LINE);c.setLineWidth(.6);c.line(LEFT,H-66,W-LEFT,H-66);self.y=H-84
+    if self.n==1:draw_website_qr(c,W,H)
  def p(self,text,style='body',after=8,x=None,width=None):
     p=Paragraph(text,STYLES[style]); w,h=p.wrap(width or WIDTH,H)
     if x is None:

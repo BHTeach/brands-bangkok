@@ -9,6 +9,7 @@ from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.platypus import Paragraph
 from reportlab.lib.utils import ImageReader
+from print_qr import draw_website_qr
 W,H=A4
 def e(s):return html.escape(str(s),quote=True)
 def colour(s):return colors.HexColor(s)
@@ -133,7 +134,7 @@ def embassy(p,ph):
  p.photo(ph[0],316,378,W-358,100)
  p.stack([A,D],42,490,245);p.stack([B,C,E],309,490,W-351)
 def cover(c,root,data):
- p=Page(c,root);p.brand();p.label('The location collection',42,89,W-84)
+ p=Page(c,root);p.brand();draw_website_qr(c,W,H);p.label('The location collection',42,89,W-84)
  p.title('Your brand.<br/>Bangkok’s next chapter.',42,111,W-84,33)
  p.text('Bring your business to Bangkok. Discover five shopping destinations for international fashion and retail brands.',42,198,W-84,'Body',12,16)
  p.text('Brands Bangkok brings the city closer to overseas fashion and retail businesses. Our guide introduces five centres, from local fashion and Thai design to international and luxury brands.',42,250,W-84,'Body',11,14.6)

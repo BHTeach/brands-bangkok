@@ -8,6 +8,18 @@ data=json.loads((ROOT/'print/print-data.json').read_text())
 locations=pymupdf.open(ROOT/'print/brands-bangkok-locations.pdf')
 rentals=pymupdf.open(ROOT/'print/brands-bangkok-rental-rates.pdf')
 assert len(locations)==7 and len(rentals)==6
+
+import zxingcpp
+QR_URL='https://bhteach.github.io/brands-bangkok/'
+for label,document in [('locations',locations),('rental',rentals)]:
+ for zoom in [1.5,2.0]:
+  pix=document[0].get_pixmap(matrix=pymupdf.Matrix(zoom,zoom),alpha=False)
+  image=Image.frombytes('RGB',(pix.width,pix.height),pix.samples)
+  decoded=[barcode.text for barcode in zxingcpp.read_barcodes(image)]
+  assert QR_URL in decoded,(label,zoom,'QR did not decode to homepage')
+ links=[link.get('uri') for link in document[0].get_links()]
+ assert QR_URL in links,(label,'QR hyperlink missing')
+
 norm=lambda s:' '.join(s.split())
 map_text=norm(locations[1].get_text())
 assert 'BTS Skytrain' in map_text and 'MRT' in map_text
@@ -41,8 +53,10 @@ for i,p in enumerate(locations):
  thumb=ImageOps.contain(im,(600,855))
  sheet.paste(thumb,((i%2)*620+10,(i//2)*880+10))
 sheet.save(preview/'location-guide.jpg',quality=85,optimize=True)
+locations[0].get_pixmap(matrix=pymupdf.Matrix(1.4,1.4)).save(preview/'location-cover-qr.png')
+rentals[0].get_pixmap(matrix=pymupdf.Matrix(1.4,1.4)).save(preview/'rental-cover-qr.png')
 locations[1].get_pixmap(matrix=pymupdf.Matrix(1.4,1.4)).save(preview/'access-map.png')
 locations[2].get_pixmap(matrix=pymupdf.Matrix(1.2,1.2)).save(preview/'location-centralworld.png')
 rentals[1].get_pixmap(matrix=pymupdf.Matrix(1.1,1.1)).save(preview/'rental-table.png')
-(ROOT/'print/validation.json').write_text(json.dumps({'location_pages':7,'rental_pages':6,'profiles_preserved':5,'rental_prices_checked':180,'charges_checked':60,'alignment_checked':True,'rate':data['rate']['rate']},indent=2)+'\n')
+(ROOT/'print/validation.json').write_text(json.dumps({'location_pages':7,'rental_pages':6,'profiles_preserved':5,'rental_prices_checked':180,'charges_checked':60,'alignment_checked':True,'rate':data['rate']['rate'],'qr_url':QR_URL,'qr_pages_verified':2,'qr_scales_verified':[1.5,2.0]},indent=2)+'\n')
 print('A4 pages, all profile paragraphs, 180 rental prices, 60 setup/deposit cells and numeric alignment verified.')

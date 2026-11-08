@@ -46,7 +46,7 @@ After changing venue data, prices or the exchange rate, rebuild both HTML and PD
 
 ~~~sh
 node build.mjs
-python -m pip install reportlab Pillow PyMuPDF
+python -m pip install reportlab Pillow PyMuPDF qrcode zxing-cpp
 python scripts/build-print-pdf.py
 ~~~
 
@@ -87,3 +87,7 @@ scripts/verify-website.mjs runs Chromium checks at 1440, 900 and 375 pixels, cov
 access-guide.json supplies station names, lines, exits, route descriptions, approximate walks and BTS/MRT explanations for both web and print. scripts/build-access-map.mjs draws the original selected-station SVG diagram; it is included on the locations page and page 2 of the printed location guide. The diagram is explicitly not to scale. Each website profile has a structured access box and a map link; the printed profiles carry corresponding plain-English directions. The location booklet now has seven pages; the rental booklet retains six.
 
 Venue, BTS/BEM and Tourism Authority of Thailand sources were checked on 8 November 2026. Exact source links and the estimate method are retained in access-guide.json. Minute ranges are approximate planning estimates from station exits to entrances, not surveyed platform-to-door journeys; station names and exit/link facts use the primary sources. The student-facing materials simply label walks as approximate and keep research notes here.
+
+## Website QR on printed covers
+
+Each booklet's first page has a static, locally generated black-and-white QR at the top-right, with a four-module quiet zone and a clickable PDF link. Both encode https://bhteach.github.io/brands-bangkok/ directly, with no QR service, tracking redirect or expiry setting. The normal website password gate remains in place. scripts/print_qr.py supplies the PDF vectors and assets/website-qr.svg for the HTML rental print view. PDF verification independently decodes both covers at two raster sizes and checks the link target.

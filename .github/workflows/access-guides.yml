@@ -28,7 +28,7 @@ jobs:
           node-version: '22'
       - name: Install document dependencies
         run: |
-          python -m pip install reportlab Pillow PyMuPDF fonttools
+          python -m pip install reportlab Pillow PyMuPDF fonttools qrcode zxing-cpp
           sudo apt-get update -qq
           sudo apt-get install -y fonts-liberation
       - name: Prepare credited photographs and fonts
@@ -48,6 +48,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/bangkok-access-map.svg assets/location-themes.css index.html about.html planning.html rental.html sources.html 404.html locations/ print-pack.html print-locations.html print-rental.html print/ preview/
+          git add assets/website-qr.svg assets/bangkok-access-map.svg assets/location-themes.css index.html about.html planning.html rental.html sources.html 404.html locations/ print-pack.html print-locations.html print-rental.html print/ preview/
           git diff --cached --quiet || git commit -m "Build checked station access guides and map [skip ci]"
           git push origin "HEAD:${GITHUB_REF_NAME}"
