@@ -23,6 +23,6 @@ def draw_website_qr(c,width,height):
  for row,modules in enumerate(MATRIX):
   for col,dark in enumerate(modules):
    if dark:c.rect(x+col*step,y+(len(MATRIX)-row-1)*step,step,step,fill=1,stroke=0)
- c.setFont('Body',7.5);c.drawCentredString(x+SIDE/2,y-11,'Website version')
+ c.setFont('Body',7.5);c.drawCentredString(x+SIDE/2,y-11,'Visit our website')
  c.linkURL(WEBSITE_URL,(x,y-15,x+SIDE,y+SIDE),relative=0,thickness=0)
  c.restoreState()

@@ -41,7 +41,7 @@ await fs.writeFile(path.join(root,'print','print-data.json'),JSON.stringify(mode
 const foot=(label,n)=>'<footer><span>Brands Bangkok · '+label+'</span><span>'+n+' / '+(label==='Location guide'?7:6)+'</span></footer>';
 const brand='<div class="print-brand"><b>B.</b><span>Brands Bangkok<small>Fashion. Retail. Possibility.</small></span></div>';
 const page=(body,label,n,id)=>'<section class="paper" id="'+id+'">'+brand+body+foot(label,n)+'</section>';
-const websiteQr='<a class="print-qr" href="https://bhteach.github.io/brands-bangkok/"><img src="assets/website-qr.svg" alt="QR code for the Brands Bangkok website"><span>Website version</span></a>';
+const websiteQr='<a class="print-qr" href="https://bhteach.github.io/brands-bangkok/"><img src="assets/website-qr.svg" alt="QR code for the Brands Bangkok website"><span>Visit our website</span></a>';
 const h=(eyebrow,title,lead='')=>'<p class="kicker">'+eyebrow+'</p><h1>'+title+'</h1>'+(lead?'<p class="intro">'+lead+'</p>':'');
 const table=(headers,rows,cls='')=>'<table class="'+cls+'"><thead><tr>'+headers.map(s=>'<th scope="col">'+s+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map((s,i)=>i===0?'<th scope="row">'+s+'</th>':'<td>'+s+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
 const rateNote='<p class="rate"><strong>Currency conversion:</strong> 1 THB = ¥'+rate.rate+' · '+rate.displayDate+' · <a href="'+rate.sourceUrl+'">'+rate.sourceName+'</a><br>Thai baht × '+rate.rate+' = Japanese yen. Round to the nearest yen.</p>';
@@ -69,7 +69,7 @@ for(const [i,v] of venues.entries()){
 const locationSections=locations.match(/<section class="paper"[\s\S]*?<\/section>/g);
 locations=locationSections.map((section,i)=>{
  const readable=section.replace(/^<section[^>]*>/,'').replace(/<\/section>$/,'').replace(/<div class="print-brand">[\s\S]*?<\/div>/,'').replace(/<footer>[\s\S]*?<\/footer>/,'').replace(/<img[^>]*>/g,'').replace(/<p class="credit">[\s\S]*?<\/p>/,'');
- return '<section class="paper premium"><img class="premium-page" src="print/location-pages/page-'+(i+1)+'.svg?v=20261108-qr" alt=""><div class="print-transcript">'+readable+'</div></section>';
+ return '<section class="paper premium"><img class="premium-page" src="print/location-pages/page-'+(i+1)+'.svg?v=20261108-qr-caption" alt=""><div class="print-transcript">'+readable+'</div></section>';
 }).join('');
 
 let rental=page(websiteQr+h('Business services','Retail spaces &amp; rates.','Space for your next collection. Rental options at five Bangkok shopping centres.')+
@@ -95,8 +95,8 @@ for(const[i,v]of model.venues.entries()){
 const index=await fs.readFile(path.join(root,'index.html'),'utf8');
 const prefix=index.split('<div id="site-content">')[0]
  .replace(/<title>.*?<\/title>/,'<title>Printed booklets | Brands Bangkok</title>')
- .replace('</head>','<link rel="stylesheet" href="assets/print.css?v=20261108-qr"></head>');
-function output(body,kind){return prefix+'<div id="site-content"><div class="print-toolbar"><strong>Brands Bangkok · Printed booklets</strong><nav><a href="print-locations.html">Location guide</a><a href="print-rental.html">Retail spaces &amp; rates</a><a href="print/brands-bangkok-locations.pdf?v=20261108-qr">Location guide PDF</a><a href="print/brands-bangkok-rental-rates.pdf?v=20261108-qr">Rental booklet PDF</a></nav><button data-print>Print '+kind+'</button><button data-lock>Lock site</button></div><main>'+body+'</main></div></body></html>';}
+ .replace('</head>','<link rel="stylesheet" href="assets/print.css?v=20261108-qr-caption"></head>');
+function output(body,kind){return prefix+'<div id="site-content"><div class="print-toolbar"><strong>Brands Bangkok · Printed booklets</strong><nav><a href="print-locations.html">Location guide</a><a href="print-rental.html">Retail spaces &amp; rates</a><a href="print/brands-bangkok-locations.pdf?v=20261108-qr-caption">Location guide PDF</a><a href="print/brands-bangkok-rental-rates.pdf?v=20261108-qr-caption">Rental booklet PDF</a></nav><button data-print>Print '+kind+'</button><button data-lock>Lock site</button></div><main>'+body+'</main></div></body></html>';}
 await fs.writeFile(path.join(root,'print-pack.html'),output(locations+rental,'both booklets'));
 await fs.writeFile(path.join(root,'print-locations.html'),output(locations,'location guide'));
 await fs.writeFile(path.join(root,'print-rental.html'),output(rental,'rental booklet'));
