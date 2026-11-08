@@ -1,0 +1,76 @@
+{
+  "title": "Getting around Bangkok",
+  "note": "Walking times are approximate, from the station exit to a shopping-centre entrance.",
+  "bts": "BTS Skytrain runs above the street. Its Sukhumvit and Silom lines meet at Siam.",
+  "mrt": "MRT is another city train network. Its Blue line connects with BTS at Asok / Sukhumvit. The BTS station is called Asok; the MRT station is called Sukhumvit.",
+  "mapNote": "Selected stations only. Diagram not to scale.",
+  "venues": {
+    "centralworld": {
+      "number": 1,
+      "train": "BTS Chit Lom · Sukhumvit line",
+      "walk": "About 3–5 minutes from Exit 1.",
+      "route": "Covered raised walkway, above the main road.",
+      "alternative": "BTS Siam, Exit 4, is also connected by a longer raised-walkway route.",
+      "mapWalk": "Chit Lom, Exit 1: about 3–5 min.",
+      "prose": "BTS Chit Lom, Exit 1: about 3–5 minutes on foot by a covered raised walkway. BTS Siam, Exit 4, is also connected by a longer raised-walkway route.",
+      "sources": [
+        "https://centralworld.co.th/en/services",
+        "https://www.thailandtravel.or.jp/transportation/"
+      ]
+    },
+    "siam-center": {
+      "number": 2,
+      "train": "BTS Siam · Sukhumvit and Silom lines",
+      "walk": "About 1–2 minutes from Exit 2.",
+      "route": "Direct station link; no main-road crossing.",
+      "mapWalk": "Siam, Exit 2: about 1–2 min.",
+      "prose": "BTS Siam, Exit 2: about 1–2 minutes on foot by a direct station link. Both BTS lines stop here.",
+      "sources": [
+        "https://www.siamcenter.co.th/en/getting-here"
+      ]
+    },
+    "terminal-21-asok": {
+      "number": 3,
+      "train": "BTS Asok · Sukhumvit line / MRT Sukhumvit · Blue line",
+      "walk": "BTS Exit 1: about 1–2 minutes. MRT Exit 3: about 2–3 minutes.",
+      "route": "Covered raised BTS link. MRT Exit 3 is on the shopping-centre side of the road.",
+      "mapWalk": "Asok, Exit 1: about 1–2 min. Sukhumvit, Exit 3: about 2–3 min.",
+      "prose": "BTS Asok, Exit 1: about 1–2 minutes via the covered raised link. MRT Sukhumvit, Exit 3: about 2–3 minutes on foot.",
+      "sources": [
+        "https://www.terminal21.co.th/asok/howtogo/en",
+        "https://metro.bemplc.co.th/Line-Maps?Line=1&Station=22&lang=en"
+      ]
+    },
+    "siam-paragon": {
+      "number": 4,
+      "train": "BTS Siam · Sukhumvit and Silom lines",
+      "walk": "About 1–2 minutes from Exit 3.",
+      "route": "Direct station link; no main-road crossing.",
+      "mapWalk": "Siam, Exit 3: about 1–2 min.",
+      "prose": "BTS Siam, Exit 3: about 1–2 minutes on foot by a direct station link. Both BTS lines stop here.",
+      "sources": [
+        "https://www.siamparagon.co.th/getting-here"
+      ]
+    },
+    "central-embassy": {
+      "number": 5,
+      "train": "BTS Phloen Chit · Sukhumvit line",
+      "walk": "About 2 minutes from Exit 5.",
+      "route": "Covered station link; no main-road crossing.",
+      "mapWalk": "Phloen Chit, Exit 5: about 2 min.",
+      "prose": "BTS Phloen Chit, Exit 5: about 2 minutes on foot by a covered station link. No main-road crossing is needed.",
+      "sources": [
+        "https://www.thailandtravel.or.jp/central-embassy/",
+        "https://www.holistique.co.th/en/contact-us/"
+      ]
+    }
+  },
+  "research": {
+    "checked": "2026-11-08",
+    "networkSources": [
+      "https://www.bts.co.th/btsroutes/btsroutes.pdf?view=map",
+      "https://metro.bemplc.co.th/Line-Maps?Line=1&Station=22&lang=en"
+    ],
+    "method": "Station exits and connection types use the linked venue, rail-operator and tourism-authority sources. Minute ranges are approximate planning estimates from exits to entrances, not surveyed journey times; CentralWorld and Central Embassy estimates are informed by TAT descriptions. Map positions are schematic and do not encode distance."
+  }
+}

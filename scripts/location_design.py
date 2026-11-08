@@ -79,7 +79,7 @@ class Page:
   self.line(42,805,W-84,'#c6cbbb',.5)
   self.c.setFillColor(colour(self.ink));self.c.setFont('Body',8)
   self.c.drawString(42,H-821,'Brands Bangkok  /  Location collection')
-  self.c.drawRightString(W-42,H-821,f'{n:02} / 06')
+  self.c.drawRightString(W-42,H-821,f'{n:02} / 07')
 def photos_for(v,extra):
  original={'file':'assets/'+v['slug']+'.jpg','caption':'Exterior' if v['slug']!='central-embassy' else 'Around the address','author':v['photoAuthor'],'license':v['photoLicense'],'licenseUrl':v['licenseUrl'],'url':v['photoPage']}
  found=[p for p in extra if p['slug']==v['slug']]
@@ -137,6 +137,7 @@ def cover(c,root,data):
  p.title('Your brand.<br/>Bangkok’s next chapter.',42,111,W-84,33)
  p.text('Bring your business to Bangkok. Discover five shopping destinations for international fashion and retail brands.',42,198,W-84,'Body',12,16)
  p.text('Brands Bangkok brings the city closer to overseas fashion and retail businesses. Our guide introduces five centres, from local fashion and Thai design to international and luxury brands.',42,250,W-84,'Body',11,14.6)
+ p.text('Rail access map · page 2',42,286,W-84,'BodyBold',9,12,col=p.accent)
  y=307
  for v in data['venues']:
   a,ink,pale=PALETTES[v['slug']]
@@ -155,13 +156,40 @@ def cover(c,root,data):
   else:right=t
  p.text('Short-term rates are available in the separate <i>Retail spaces &amp; rates</i> booklet.',309,right+8,W-351,'Body',9,12)
  p.footer(1)
+
+def access_page(c,root,data):
+ import pymupdf
+ from reportlab.platypus import Table,TableStyle
+ access=data['accessGuide']
+ p=Page(c,root);p.brand();p.label('Connected addresses',42,88,W-84)
+ p.title(e(access['title']),42,109,W-84,30)
+ p.text('Station links and short walks to five shopping destinations.',42,155,W-84,'Body',11,14)
+ p.text(e(access['note']),42,177,W-84,'Body',9,12,col='#52615c')
+ with pymupdf.open(root/'assets/bangkok-access-map.svg') as document:
+  pix=document[0].get_pixmap(matrix=pymupdf.Matrix(1.8,1.8),alpha=False)
+  c.drawImage(ImageReader(BytesIO(pix.tobytes('png'))),42,H-201-(W-84)*665/1200,width=W-84,height=(W-84)*665/1200)
+ p.text('<b>BTS Skytrain:</b> '+e(access['bts']),42,494,W-84,'Body',10,13)
+ p.text('<b>MRT:</b> '+e(access['mrt']),42,519,W-84,'Body',10,13)
+ p.text('From the station exit',42,559,W-84,'BodyBold',12,16)
+ normal=ParagraphStyle('walk',fontName='Body',fontSize=10.5,leading=13,textColor=colour(p.ink))
+ bold=ParagraphStyle('walk-heading',parent=normal,fontName='BodyBold')
+ rows=[['Location','Approximate walk from the station exit']]+[[v['name'],access['venues'][v['slug']]['mapWalk']]for v in data['venues']]
+ cells=[[Paragraph(e(s),bold if i==0 else normal)for s in row]for i,row in enumerate(rows)]
+ table=Table(cells,colWidths=[145,W-84-145],hAlign='LEFT')
+ table.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('BACKGROUND',(0,0),(-1,0),colour('#edf1ea')),('LINEABOVE',(0,0),(-1,0),.8,colour(p.ink)),('LINEBELOW',(0,0),(-1,-1),.4,colour('#c6cbbb')),('LEFTPADDING',(0,0),(-1,-1),7),('RIGHTPADDING',(0,0),(-1,-1),7),('TOPPADDING',(0,0),(-1,-1),6),('BOTTOMPADDING',(0,0),(-1,-1),6)]))
+ _,height=table.wrap(W-84,H)
+ if 584+height>785:raise ValueError('Access table overflows')
+ table.drawOn(c,42,H-584-height)
+ p.footer(2)
+
 def build(Book,data,root):
  c=canvas.Canvas(str(root/'print/brands-bangkok-locations.pdf'),pagesize=A4,pageCompression=1,invariant=1)
  c.setTitle('Location guide | Brands Bangkok');c.setAuthor('Brands Bangkok')
  extra=json.loads((root/'print/additional-photos.json').read_text(encoding='utf-8'))
  cover(c,root,data);c.showPage()
+ access_page(c,root,data);c.showPage()
  layouts={'centralworld':centralworld,'siam-center':siam_center,'terminal-21-asok':terminal,'siam-paragon':paragon,'central-embassy':embassy}
- for i,v in enumerate(data['venues'],2):
+ for i,v in enumerate(data['venues'],3):
   p=Page(c,root,v);ph=photos_for(v,extra)
   layouts[v['slug']](p,ph);p.footer(i,ph);c.showPage()
  c.save()

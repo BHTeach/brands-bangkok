@@ -118,4 +118,4 @@ if __name__=='__main__':
  with pymupdf.open(ROOT/'print/brands-bangkok-locations.pdf') as document:
   for i,page in enumerate(document,1):
    (vector_dir/f'page-{i}.svg').write_text(page.get_svg_image(text_as_path=True),encoding='utf-8')
- print('Built two 6-page A4 PDF booklets.')
+ print('Built a 7-page location guide and a 6-page rental booklet.')

@@ -7,6 +7,7 @@ import {chromium} from 'playwright';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const venues=JSON.parse(await fs.readFile(path.join(root,'venues.json'),'utf8'));
 const themes=JSON.parse(await fs.readFile(path.join(root,'location-themes.json'),'utf8'));
+const accessGuide=JSON.parse(await fs.readFile(path.join(root,'access-guide.json'),'utf8'));
 const output=path.join(root,'preview');
 await fs.mkdir(output,{recursive:true});
 const mime={'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.jpg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.json':'application/json','.pdf':'application/pdf'};
@@ -49,7 +50,11 @@ try{
    await page.locator('.venue-photo-grid img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
    assert.equal(await page.locator('.venue-photo-grid img').count(),2);
    const content=await page.locator('#main').innerText();
-   for(const key of ['intro','character','neighbourhood','access','business','beyond'])assert(content.includes(v[key]),v.slug+' '+key);
+   for(const key of ['intro','character','neighbourhood','business','beyond'])assert(content.includes(v[key]),v.slug+' '+key);
+   const accessText=await page.locator('.access-box').innerText();
+   for(const key of ['train','walk','route'])assert(accessText.includes(accessGuide.venues[v.slug][key]),v.slug+' '+key);
+   assert(accessText.includes(accessGuide.note));
+   if(width===375&&['centralworld','terminal-21-asok'].includes(v.slug))await page.locator('.access-box').screenshot({path:path.join(output,'access-'+v.slug+'-'+width+'.png')});
    assert(!/THB\s*[\d,]+/.test(content),v.slug+' leaked pricing');
    assert((await page.locator('body').getAttribute('class')).includes('theme-'+v.slug));
    const actual=await page.locator('body').evaluate(el=>getComputedStyle(el).getPropertyValue('--venue-accent').trim());
@@ -64,8 +69,18 @@ try{
    // The printable resource pages deliberately retain their fixed A4 width.
    if(!relative.startsWith('print-'))assert(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),relative+' overflow at '+width);
    if(relative==='index.html'||relative==='locations/index.html')assert.equal(await page.locator('.location-card').count(),5);
+   if(relative==='locations/index.html'){
+    await page.locator('#access-map img').evaluate(image=>image.decode());
+    assert.equal(await page.locator('.access-summary li').count(),5);
+    assert((await page.locator('#access-map').innerText()).includes(accessGuide.mrt));
+    if(width===375)assert(await page.locator('.access-map-scroll').evaluate(el=>el.scrollWidth>el.clientWidth));
+    if(width===1440)await page.locator('.access-map-scroll').screenshot({path:path.join(output,'bangkok-access-map.png')});
+   }
   }
  }
+ await page.goto(base+'locations/centralworld.html');
+ await page.getByRole('link',{name:'See the rail access map'}).click();
+ assert.equal(new URL(page.url()).hash,'#access-map');
  await page.setViewportSize({width:1440,height:1100});
  await page.goto(base+'rental.html?location=centralworld');
  assert.equal(await page.locator('#rental-location').inputValue(),'centralworld');
@@ -109,6 +124,8 @@ try{
  report.gateChecks.push('JavaScript-disabled gate');
  await noJs.close();
  assert.deepEqual(errors,[]);
+ report.accessMapChecked=true;
+ report.accessBoxesChecked=5;
  report.browserErrors=errors;
  await fs.writeFile(path.join(output,'website-checks.json'),JSON.stringify(report,null,2)+'\n');
  console.log('Checked five profiles at three widths, both photos, source copy, navigation, password gate and rental/currency interactions.');

@@ -6,7 +6,7 @@
     "line": "A city-scale stage for retail.",
     "type": "International fashion · Lifestyle · Events",
     "rail": "BTS Chit Lom / Siam",
-    "access": "CentralWorld is a short walk from BTS Chit Lom or Siam. Raised walkways connect the shopping area to both stations.",
+    "access": "BTS Chit Lom, Exit 1: about 3–5 minutes on foot by a covered raised walkway. BTS Siam, Exit 4, is also connected by a longer raised-walkway route.",
     "intro": "Put your brand among international fashion, food, beauty and entertainment in the centre of Bangkok.",
     "character": "CentralWorld has a wide choice of clothing and sportswear. Uniqlo, Zara, Adidas and Nike are among the brands here. Visitors can shop, meet friends and spend a full day at the centre.",
     "neighbourhood": "The centre is on Rama I Road in Ratchaprasong. Events and seasonal promotions add to the activity around the shops. There are many different areas within the large complex.",
@@ -35,6 +35,14 @@
       [
         "Transport and services",
         "https://www.centralworld.co.th/en/services"
+      ],
+      [
+        "Station access",
+        "https://centralworld.co.th/en/services"
+      ],
+      [
+        "Station access",
+        "https://www.thailandtravel.or.jp/transportation/"
       ]
     ]
   },
@@ -45,7 +53,7 @@
     "line": "An address for new ideas.",
     "type": "Thai design · Street fashion · Creative retail",
     "rail": "BTS Siam",
-    "access": "Siam Center connects to BTS Siam at Exit 2. Both the Sukhumvit and Silom train lines stop here.",
+    "access": "BTS Siam, Exit 2: about 1–2 minutes on foot by a direct station link. Both BTS lines stop here.",
     "intro": "Give your brand a home among fashion, design and new ideas in the Siam shopping district.",
     "character": "Siam Center brings together fashion, art, beauty and lifestyle shops. Thai designers are an important part of the offer. Absolute Siam Store sells products from several Thai brands.",
     "neighbourhood": "Siam Paragon is next door, and Siam Discovery is nearby. Visitors can move between several shopping centres in the same area. The BTS connection makes the journey easy.",
@@ -84,7 +92,7 @@
     "line": "Where journeys meet shopping.",
     "type": "Local shops · Fashion · Dining",
     "rail": "BTS Asok + MRT Sukhumvit",
-    "access": "BTS Asok Exit 1 and MRT Sukhumvit Exit 3 connect to the mall. Visitors can reach it using either train system.",
+    "access": "BTS Asok, Exit 1: about 1–2 minutes via the covered raised link. MRT Sukhumvit, Exit 3: about 2–3 minutes on foot.",
     "intro": "Bring your collection to a shopping centre where local shops meet visitors from across the city.",
     "character": "Terminal 21 Asok has an airport theme. Different areas are based on cities such as Tokyo, London and San Francisco. Local shops sell fashion alongside restaurants and entertainment.",
     "neighbourhood": "The mall is at Sukhumvit Soi 19 in the Asok business area. Its two train connections make it easy to include shopping in a journey through Bangkok.",
@@ -113,6 +121,10 @@
       [
         "Official venue",
         "https://www.terminal21.co.th/asok/"
+      ],
+      [
+        "Station access",
+        "https://metro.bemplc.co.th/Line-Maps?Line=1&Station=22&lang=en"
       ]
     ]
   },
@@ -123,7 +135,7 @@
     "line": "A prominent place to be seen.",
     "type": "Luxury fashion · International retail · Lifestyle",
     "rail": "BTS Siam",
-    "access": "Siam Paragon connects to BTS Siam at Exit 3. Both the Sukhumvit and Silom lines stop at this station.",
+    "access": "BTS Siam, Exit 3: about 1–2 minutes on foot by a direct station link. Both BTS lines stop here.",
     "intro": "Show your brand in a well-known Bangkok shopping centre with international fashion, restaurants and entertainment.",
     "character": "Siam Paragon is known for luxury fashion. It also has brands such as H&M, Uniqlo, Zara and United Arrows. Visitors can find both luxury labels and everyday clothing in the same centre.",
     "neighbourhood": "The centre is in the Siam shopping district, next to Siam Center. The BTS station and nearby malls make it easy to visit several shopping destinations in one trip.",
@@ -162,7 +174,7 @@
     "line": "A considered setting for your brand.",
     "type": "Luxury · Design · Dining",
     "rail": "BTS Phloen Chit",
-    "access": "Central Embassy connects to BTS Phloen Chit. It stands where Ploen Chit Road meets Wireless Road.",
+    "access": "BTS Phloen Chit, Exit 5: about 2 minutes on foot by a covered station link. No main-road crossing is needed.",
     "intro": "Present your brand in a stylish setting with luxury fashion, design, food and hotel services.",
     "character": "Central Embassy brings together international and Thai fashion, beauty, design and restaurants. Its curved building and open interior are part of the experience.",
     "neighbourhood": "Park Hyatt Bangkok is above the shopping centre. On Level 6, Open House brings books, food and shared spaces together. People can spend time here as well as shop.",
@@ -195,6 +207,10 @@
       [
         "Rail connection · Tourism Authority of Thailand",
         "https://www.thailandtravel.or.jp/central-embassy/"
+      ],
+      [
+        "Station access",
+        "https://www.holistique.co.th/en/contact-us/"
       ]
     ]
   }

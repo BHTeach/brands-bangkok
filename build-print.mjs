@@ -4,6 +4,7 @@ import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 const root=path.dirname(fileURLToPath(import.meta.url));
 const venues=JSON.parse(await fs.readFile(path.join(root,'venues.json'),'utf8'));
+const accessGuide=JSON.parse(await fs.readFile(path.join(root,'access-guide.json'),'utf8'));
 const rate=JSON.parse(await fs.readFile(path.join(root,'exchange-rate.json'),'utf8'));
 const context={module:{exports:{}}};
 vm.runInNewContext(await fs.readFile(path.join(root,'assets/rental.js'),'utf8'),context);
@@ -28,7 +29,7 @@ const terms=[
  'Staff, stock, payment equipment, electricity and taxes are not included.',
  'An estimate does not reserve a space. Exact dates and the position of the space are confirmed before booking.'
 ];
-const model={rate,services,terms,sections:paras,seasons:seasonKeys.map(k=>({key:k,label:seasons[k].label})),setups:Object.entries(setups).map(([key,s])=>({key,label:s.label,includes:s.includes})),venues:venues.map(v=>{
+const model={rate,accessGuide,services,terms,sections:paras,seasons:seasonKeys.map(k=>({key:k,label:seasons[k].label})),setups:Object.entries(setups).map(([key,s])=>({key,label:s.label,includes:s.includes})),venues:venues.map(v=>{
  const ref={referenceArea:v.size,referenceRent:v.rent,referenceSetup:v.setup,referenceDeposit:v.deposit};
  return {...v,
   rents:areas.flatMap(area=>days.map(day=>({area,days:day,values:seasonKeys.map(season=>estimate(ref,{season,days:day,area,setup:'space'}).rent)}))),
@@ -37,7 +38,7 @@ const model={rate,services,terms,sections:paras,seasons:seasonKeys.map(k=>({key:
 })};
 await fs.mkdir(path.join(root,'print'),{recursive:true});
 await fs.writeFile(path.join(root,'print','print-data.json'),JSON.stringify(model,null,2)+'\n');
-const foot=(label,n)=>'<footer><span>Brands Bangkok · '+label+'</span><span>'+n+' / 6</span></footer>';
+const foot=(label,n)=>'<footer><span>Brands Bangkok · '+label+'</span><span>'+n+' / '+(label==='Location guide'?7:6)+'</span></footer>';
 const brand='<div class="print-brand"><b>B.</b><span>Brands Bangkok<small>Fashion. Retail. Possibility.</small></span></div>';
 const page=(body,label,n,id)=>'<section class="paper" id="'+id+'">'+brand+body+foot(label,n)+'</section>';
 const h=(eyebrow,title,lead='')=>'<p class="kicker">'+eyebrow+'</p><h1>'+title+'</h1>'+(lead?'<p class="intro">'+lead+'</p>':'');
@@ -48,19 +49,26 @@ let locations=page(h('The location collection','Your brand. Bangkok’s next cha
  table(['Location','Retail setting','Rail access'],venues.map(v=>[esc(v.name),esc(v.type),esc(v.rail)]),'directory')+
  '<h2>Business services</h2>'+services.map(([a,b])=>'<h3>'+a+'</h3><p>'+b+'</p>').join('')+
  '<p class="small">Short-term rates are available in the separate <em>Retail spaces &amp; rates</em> booklet.</p>','Location guide',1,'location-guide');
+locations+=page(h('Connected addresses',esc(accessGuide.title),'Station links and short walks to five shopping destinations.')+
+ '<img src="assets/bangkok-access-map.svg" alt="Rail connections for the five shopping locations. Diagram not to scale.">'+
+ '<p><strong>BTS Skytrain</strong><br>'+esc(accessGuide.bts)+'</p><p><strong>MRT</strong><br>'+esc(accessGuide.mrt)+'</p>'+
+ '<h2>From the station exit</h2><p>'+esc(accessGuide.note)+'</p>'+
+ table(['Location','Approximate walk'],venues.map(v=>[esc(v.name),esc(accessGuide.venues[v.slug].mapWalk)])),
+ 'Location guide',2,'location-access-map');
+
 for(const [i,v] of venues.entries()){
  locations+=page(h(esc(v.area)+' · Bangkok',esc(v.name),esc(v.intro))+
  '<p class="tagline">'+esc(v.line)+'</p><div class="facts"><p><strong>Retail setting</strong><br>'+esc(v.type)+'</p><p><strong>Rail access</strong><br>'+esc(v.rail)+'</p></div>'+
  '<img class="profile-photo" src="assets/'+v.slug+'.jpg" alt="'+esc(v.name)+' in Bangkok">'+
  '<p class="credit">Photo: <a href="'+esc(v.photoPage)+'">'+esc(v.photoAuthor)+'</a> · <a href="'+v.licenseUrl+'">'+esc(v.photoLicense)+'</a> · Resized and cropped. Original: Wikimedia Commons.</p>'+
- paras.map(([title,key])=>'<h2>'+title+'</h2><p>'+esc(v[key])+'</p>').join(''),'Location guide',i+2,v.slug);
+ paras.map(([title,key])=>'<h2>'+title+'</h2><p>'+esc(v[key])+'</p>').join(''),'Location guide',i+3,v.slug);
 }
 
 // The print view uses the PDF's vector pages, with a semantic text version for accessibility.
 const locationSections=locations.match(/<section class="paper"[\s\S]*?<\/section>/g);
 locations=locationSections.map((section,i)=>{
  const readable=section.replace(/^<section[^>]*>/,'').replace(/<\/section>$/,'').replace(/<div class="print-brand">[\s\S]*?<\/div>/,'').replace(/<footer>[\s\S]*?<\/footer>/,'').replace(/<img[^>]*>/g,'').replace(/<p class="credit">[\s\S]*?<\/p>/,'');
- return '<section class="paper premium"><img class="premium-page" src="print/location-pages/page-'+(i+1)+'.svg?v=20261108" alt=""><div class="print-transcript">'+readable+'</div></section>';
+ return '<section class="paper premium"><img class="premium-page" src="print/location-pages/page-'+(i+1)+'.svg?v=20261108-access" alt=""><div class="print-transcript">'+readable+'</div></section>';
 }).join('');
 
 let rental=page(h('Business services','Retail spaces &amp; rates.','Space for your next collection. Rental options at five Bangkok shopping centres.')+
@@ -86,9 +94,9 @@ for(const[i,v]of model.venues.entries()){
 const index=await fs.readFile(path.join(root,'index.html'),'utf8');
 const prefix=index.split('<div id="site-content">')[0]
  .replace(/<title>.*?<\/title>/,'<title>Printed booklets | Brands Bangkok</title>')
- .replace('</head>','<link rel="stylesheet" href="assets/print.css?v=20261108"></head>');
-function output(body,kind){return prefix+'<div id="site-content"><div class="print-toolbar"><strong>Brands Bangkok · Printed booklets</strong><nav><a href="print-locations.html">Location guide</a><a href="print-rental.html">Retail spaces &amp; rates</a><a href="print/brands-bangkok-locations.pdf?v=20261108">Location guide PDF</a><a href="print/brands-bangkok-rental-rates.pdf?v=20261108">Rental booklet PDF</a></nav><button data-print>Print '+kind+'</button><button data-lock>Lock site</button></div><main>'+body+'</main></div></body></html>';}
+ .replace('</head>','<link rel="stylesheet" href="assets/print.css?v=20261108-access"></head>');
+function output(body,kind){return prefix+'<div id="site-content"><div class="print-toolbar"><strong>Brands Bangkok · Printed booklets</strong><nav><a href="print-locations.html">Location guide</a><a href="print-rental.html">Retail spaces &amp; rates</a><a href="print/brands-bangkok-locations.pdf?v=20261108-access">Location guide PDF</a><a href="print/brands-bangkok-rental-rates.pdf?v=20261108-access">Rental booklet PDF</a></nav><button data-print>Print '+kind+'</button><button data-lock>Lock site</button></div><main>'+body+'</main></div></body></html>';}
 await fs.writeFile(path.join(root,'print-pack.html'),output(locations+rental,'both booklets'));
 await fs.writeFile(path.join(root,'print-locations.html'),output(locations,'location guide'));
 await fs.writeFile(path.join(root,'print-rental.html'),output(rental,'rental booklet'));
-console.log('Built 6-page location guide and 6-page rental booklet. Prices use assets/rental.js directly.');
+console.log('Built 7-page location guide and 6-page rental booklet. Prices use assets/rental.js directly.');

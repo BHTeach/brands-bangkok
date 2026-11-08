@@ -33,10 +33,10 @@ Rental math in assets/rental.js uses the previous per-venue 14-day Aug–Oct ren
 
 ## Printable pack
 
-Two separate six-page A4 booklets are available, so rental information can be handed out for the second part of lesson 1:
+Two separate A4 booklets are available, so rental information can be handed out for the second part of lesson 1:
 
-- print/brands-bangkok-locations.pdf — overview, business services and five full location profiles, with photographs and credits.
-- print/brands-bangkok-rental-rates.pdf — options and terms, followed by a rate page for each location. Every combination of season, 7/14/28-day stay and 20/40/60 m² space is listed; setup, extras and refundable deposits are separate. The dated THB–JPY rate is printed.
+- print/brands-bangkok-locations.pdf — seven pages: overview, rail access map, business services and five full location profiles, with photographs and credits.
+- print/brands-bangkok-rental-rates.pdf — six pages: options and terms, followed by a rate page for each location. Every combination of season, 7/14/28-day stay and 20/40/60 m² space is listed; setup, extras and refundable deposits are separate. The dated THB–JPY rate is printed.
 
 print-pack.html contains both booklets. print-locations.html and print-rental.html contain each separately. These pages retain the access gate and are unlinked from the student website navigation; print and PDF controls appear only on these resource pages. PDF assets are static public files, like other repository assets.
 
@@ -81,3 +81,9 @@ For Linux builds, scripts/prepare-print-assets.py downloads credited photos and 
 Location pages and cards use the same photographs and colour palettes as the printed guide. Palettes are in location-themes.json and build.mjs generates assets/location-themes.css. Photo metadata is shared from print/additional-photos.json; the Sources & photo credits page includes every displayed image. Profiles use a static two-image gallery which stacks on narrow screens. No gallery JavaScript or new runtime dependencies are required.
 
 scripts/verify-website.mjs runs Chromium checks at 1440, 900 and 375 pixels, covering all five profiles, image loading, copy, overflow, mobile navigation, access gates and the rental/currency controls. Run it after node build.mjs with Playwright installed. The Check website design workflow provides the same checks and preview screenshots.
+
+## Station access and rail diagram
+
+access-guide.json supplies station names, lines, exits, route descriptions, approximate walks and BTS/MRT explanations for both web and print. scripts/build-access-map.mjs draws the original selected-station SVG diagram; it is included on the locations page and page 2 of the printed location guide. The diagram is explicitly not to scale. Each website profile has a structured access box and a map link; the printed profiles carry corresponding plain-English directions. The location booklet now has seven pages; the rental booklet retains six.
+
+Venue, BTS/BEM and Tourism Authority of Thailand sources were checked on 8 November 2026. Exact source links and the estimate method are retained in access-guide.json. Minute ranges are approximate planning estimates from station exits to entrances, not surveyed platform-to-door journeys; station names and exit/link facts use the primary sources. The student-facing materials simply label walks as approximate and keep research notes here.
