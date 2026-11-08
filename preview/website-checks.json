@@ -1,0 +1,149 @@
+{
+  "widths": [
+    1440,
+    900,
+    375
+  ],
+  "profiles": [
+    {
+      "slug": "centralworld",
+      "width": 1440,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "siam-center",
+      "width": 1440,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "terminal-21-asok",
+      "width": 1440,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "siam-paragon",
+      "width": 1440,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "central-embassy",
+      "width": 1440,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "centralworld",
+      "width": 900,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "siam-center",
+      "width": 900,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "terminal-21-asok",
+      "width": 900,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "siam-paragon",
+      "width": 900,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "central-embassy",
+      "width": 900,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "centralworld",
+      "width": 375,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "siam-center",
+      "width": 375,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "terminal-21-asok",
+      "width": 375,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "siam-paragon",
+      "width": 375,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    },
+    {
+      "slug": "central-embassy",
+      "width": 375,
+      "photos": 2,
+      "copy": true,
+      "theme": true,
+      "overflow": false
+    }
+  ],
+  "rentalChecks": [
+    "location preselection",
+    "blank required options",
+    "validity",
+    "THB total and deposit",
+    "JPY conversion",
+    "currency round trip",
+    "changed options hide old estimate",
+    "season change",
+    "storage and signs"
+  ],
+  "gateChecks": [
+    "direct-link gate",
+    "wrong password",
+    "correct password",
+    "lock site",
+    "JavaScript-disabled gate"
+  ],
+  "menuChecked": true,
+  "browserErrors": []
+}
